@@ -1,0 +1,17 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.chat-container-main{
+    background-image: linear-gradient(to bottom right, blue, gray);
+}
+
+.chat-element p {
+    color:black;
+}
+
+.leff-text-wrapper {
+    color: black;
+}

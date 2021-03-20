@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Map from "./pages/Map";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
+import ChatRoom from "./ChatRooms/ChatRoom";
 
 function App(props) {
   return (
@@ -33,6 +34,9 @@ function App(props) {
         </Route>
         <Route exact path="/profile">
           <Profile />
+        </Route>
+        <Route exact path="/chatroom">
+          <ChatRoom />
         </Route>
       </Switch>
     </Router>

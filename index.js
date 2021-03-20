@@ -19,6 +19,8 @@ io.on("connection", (socket) => {
     console.log("messsage sent");
     io.emit("message", message);
   });
+  
+
 });
 app.use(express.static(path.join(__dirname, "client/build")));
 
