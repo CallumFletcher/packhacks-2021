@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 import { TextField, Button } from "@material-ui/core";
 
-const socket = io.connect("/");
+//for local testing, change to localhost:5000
+//the react proxy doesn't like socket connections
+const socket = io.connect("localhost:5000");
 
 function App(props) {
   const [message, setMessage] = useState({ message: "", name: "" });
