@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import VideoConference from "./pages/VideoConference";
 import ChatRoom from "./ChatRooms/ChatRoom";
+import ChatHomeRoom from "./ChatRooms/ChatsHomeRoom";
 
 function App(props) {
   return (
@@ -38,7 +39,10 @@ function App(props) {
         <Route exact path="/video-conference">
           <VideoConference />
         </Route>
-        <Route exact path="/chatroom">
+        <Route exact path="/chathomeroom">
+          <ChatHomeRoom />
+        </Route>
+        <Route exact path="/:roomId">
           <ChatRoom />
         </Route>
       </Switch>

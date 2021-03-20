@@ -3,13 +3,16 @@ import io from "socket.io-client";
 import { TextField, Button } from "@material-ui/core";
 import "./ChatRoom.css";
 
-const socket = io.connect("localhost:3000");
+const socket = io.connect("localhost:5000");
 
 
-function ChatRoom(props) {
+
+
+function ChatRoom() {
+ 
   const [message, setMessage] = useState({ message: "", name: "" });
   const [chat, setChat] = useState([]);
-  //lkjlkj
+
   useEffect(() => {
     socket.on("message", (message) => {
       setChat((prev) => [...prev, message]);
@@ -48,7 +51,7 @@ return (
           left: '40px',
         }}
       >
-        <h1>{`Wellcome to ${chatName}`}</h1>
+        <h2 id="room-name"></h2>
         </div>
           <TextField
             syle={{
@@ -104,9 +107,9 @@ return (
     >
       {chat.map((message) => (
             <div className="chat-element" style={{ position: 'relative', margin: 0, padding: 0, left: '40px' }}>
-              <span>
+              <span id ="users">
                 <p>{message.message}</p> <p>-{message.name}</p>
-            </span>
+              </span>
           </div>
         ))}
     </div>

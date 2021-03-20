@@ -17,9 +17,10 @@ const LandingPage = (props) => {
     <Container>
       <Typography variant="h1" align="center">
         Welcome My Dudes
-        <Link to={"/chatroom"} className="enter-chatroom-button">
+        <Link to={"/chathomeroom"} className="enter-chathomeSroom-button">
         Join room
       </Link>
+      ^^^ Im am good, you?
       </Typography>
     </Container>
   );
