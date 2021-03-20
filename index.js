@@ -7,6 +7,7 @@ const app = express();
 const dotenv = require("dotenv");
 const port = process.env.PORT || 5000;
 const cors = require("cors");
+const Lobby = require("./models/Lobby");
 
 app.use(cors());
 app.options("*", cors());
@@ -42,9 +43,8 @@ io.on("connection", (socket) => {
     console.log("messsage sent");
     io.emit("message", message);
   });
-  
-
 });
+
 app.use(express.static(path.join(__dirname, "client/build")));
 
 app.get("*", (req, res) => {
