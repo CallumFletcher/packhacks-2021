@@ -1,77 +1,41 @@
-import React, { useState, useEffect } from "react";
-import io from "socket.io-client";
-import { TextField, Button } from "@material-ui/core";
+import React from "react";
 
-const socket = io.connect("/");
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import LandingPage from "./pages/LandingPage";
+import Lobby from "./pages/Lobby";
+import Leaderboard from "./pages/Leaderboard";
+import Login from "./pages/Login";
+import Map from "./pages/Map";
+import Profile from "./pages/Profile";
+import Signup from "./pages/Signup";
 
 function App(props) {
-  const [message, setMessage] = useState({ message: "", name: "" });
-  const [chat, setChat] = useState([]);
-  //lkjlkj
-  useEffect(() => {
-    socket.on("message", (message) => {
-      setChat((prev) => [...prev, message]);
-      console.log(message);
-    });
-  }, []);
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-      }}
-    >
-      <TextField
-        style={{ paddingBottom: 10 }}
-        variant="outlined"
-        placeholder="name"
-        value={message.name}
-        onChange={(e) => {
-          setMessage((prev) => ({ ...prev, name: e.target.value }));
-        }}
-      />
-      <div
-        style={{
-          height: 700,
-          width: 400,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-start",
-          overflow: "scroll",
-          border: "solid",
-        }}
-      >
-        {chat.map((message) => (
-          <div style={{ margin: 0, padding: 0 }}>
-            <span>
-              <p>{message.message}</p> <p>-{message.name}</p>
-            </span>
-          </div>
-        ))}
-      </div>
-      <TextField
-        placeholder="message"
-        style={{ width: 300 }}
-        variant="outlined"
-        value={message.message}
-        onChange={(e) => {
-          setMessage((prev) => ({ ...prev, message: e.target.value }));
-        }}
-      />
-      <Button
-        variant="contained"
-        onClick={(e) => {
-          e.preventDefault();
-          socket.emit("message", message);
-          setMessage((prev) => ({ ...prev, message: "" }));
-        }}
-      >
-        Submit
-      </Button>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <LandingPage />
+        </Route>
+        <Route exact path="/lobby">
+          <Lobby />
+        </Route>
+        <Route exact path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/signup">
+          <Signup />
+        </Route>
+        <Route exact path="/Leaderboard">
+          <Leaderboard />
+        </Route>
+        <Route exact path="/map">
+          <Map />
+        </Route>
+        <Route exact path="/profile">
+          <Profile />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
