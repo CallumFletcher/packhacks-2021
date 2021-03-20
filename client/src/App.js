@@ -1,23 +1,76 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import io from "socket.io-client";
+import { TextField, Button } from "@material-ui/core";
 
-function App() {
+const socket = io.connect("/");
+
+function App(props) {
+  const [message, setMessage] = useState({ message: "", name: "" });
+  const [chat, setChat] = useState([]);
+  //lkjlkj
+  useEffect(() => {
+    socket.on("message", (message) => {
+      setChat((prev) => [...prev, message]);
+      console.log(message);
+    });
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+      }}
+    >
+      <TextField
+        style={{ paddingBottom: 10 }}
+        variant="outlined"
+        placeholder="name"
+        value={message.name}
+        onChange={(e) => {
+          setMessage((prev) => ({ ...prev, name: e.target.value }));
+        }}
+      />
+      <div
+        style={{
+          height: 700,
+          width: 400,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
+          overflow: "scroll",
+          border: "solid",
+        }}
+      >
+        {chat.map((message) => (
+          <div style={{ margin: 0, padding: 0 }}>
+            <span>
+              <p>{message.message}</p> <p>-{message.name}</p>
+            </span>
+          </div>
+        ))}
+      </div>
+      <TextField
+        placeholder="message"
+        style={{ width: 300 }}
+        variant="outlined"
+        value={message.message}
+        onChange={(e) => {
+          setMessage((prev) => ({ ...prev, message: e.target.value }));
+        }}
+      />
+      <Button
+        variant="contained"
+        onClick={(e) => {
+          e.preventDefault();
+          socket.emit("message", message);
+          setMessage((prev) => ({ ...prev, message: "" }));
+        }}
+      >
+        Submit
+      </Button>
     </div>
   );
 }

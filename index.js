@@ -9,6 +9,16 @@ const io = socketIo(server, { cors: { origin: "*" } });
 
 io.on("connection", (socket) => {
   console.log("new connection");
+
+  io.emit("message", { message: "user joined", name: "server" });
+
+  socket.on("disconnect", () => {
+    io.emit("message", "user has left");
+  });
+  socket.on("message", (message) => {
+    console.log("messsage sent");
+    io.emit("message", message);
+  });
 });
 app.use(express.static(path.join(__dirname, "client/build")));
 
