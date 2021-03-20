@@ -3,8 +3,8 @@ import io from "socket.io-client";
 import { TextField, Button } from "@material-ui/core";
 import "./ChatRoom.css";
 
-const socket = io.connect("localhost:5000");
-const chatName = "localhost:5000";
+const socket = io.connect("localhost:3000");
+
 
 function ChatRoom(props) {
   const [message, setMessage] = useState({ message: "", name: "" });
@@ -16,7 +16,8 @@ function ChatRoom(props) {
       console.log(message);
     });
   }, []);
-  return (
+
+return (
   <div className="chat-container-main"
       style={{
         height: '100vh',
@@ -109,6 +110,7 @@ function ChatRoom(props) {
           </div>
         ))}
     </div>
+    
   </div>
 
 

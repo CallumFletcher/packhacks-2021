@@ -10,7 +10,7 @@ const io = socketIo(server, { cors: { origin: "*" } });
 io.on("connection", (socket) => {
   console.log("new connection");
 
-  io.emit("message", { message: "User joined", name: "server" });
+  io.emit("message", { message: "user joined", name: "server" });
 
   socket.on("disconnect", () => {
     io.emit("message", "user has left");
@@ -31,4 +31,3 @@ app.get("*", (req, res) => {
 server.listen(process.env.PORT || 5000, () => {
   console.log("listening on port " + 5000);
 });
-
