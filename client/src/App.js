@@ -7,13 +7,14 @@ const socket = io.connect("/");
 function App(props) {
   const [message, setMessage] = useState({ message: "", name: "" });
   const [chat, setChat] = useState([]);
-  //lkjlkj
+
   useEffect(() => {
     socket.on("message", (message) => {
       setChat((prev) => [...prev, message]);
       console.log(message);
     });
   }, []);
+
   return (
     <div
       style={{
