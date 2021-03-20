@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Jitsi from "react-jitsi";
 
-function VideoConference(props) {
-  const email = "cool@gmail.com";
-  const name = "Cool Cool";
-  const roomName = email + name;
+function VideoConference() {
+  const roomName =
+    "my-super-secret-meeting-123e4567-e89b-12d3-a456-426655440000";
+  const name = "Joseph Strawberry";
 
   const handleAPI = (JitsiMeetAPI) => {
     console.log(JitsiMeetAPI);
@@ -13,10 +13,10 @@ function VideoConference(props) {
   return (
     <React.Fragment>
       <Jitsi
-      //onAPILoad={handleAPI}
-      //roomName={roomName}
-      //displayName={name}
-      //config={{ prejoinedPageEnabled: false }}
+        onAPILoad={handleAPI}
+        roomName={roomName}
+        displayName={name}
+        config={{ prejoinedPageEnabled: false }}
       />
     </React.Fragment>
   );

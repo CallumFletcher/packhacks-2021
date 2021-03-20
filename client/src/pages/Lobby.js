@@ -9,13 +9,14 @@ const socket = io.connect("http://localhost:5000");
 function Lobby(props) {
   const [message, setMessage] = useState({ message: "", name: "" });
   const [chat, setChat] = useState([]);
-  //lkjlkj
+
   useEffect(() => {
     socket.on("message", (message) => {
       setChat((prev) => [...prev, message]);
       console.log(message);
     });
   }, []);
+
   return (
     <div
       style={{
