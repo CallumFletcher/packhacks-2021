@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, makeStyles } from "@material-ui/core";
+import { Typography, makeStyles, Container } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -13,9 +13,11 @@ const useStyles = makeStyles({
 const LandingPage = (props) => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <Typography variant="h1">Welcome My Dudes</Typography>
-    </div>
+    <Container>
+      <Typography variant="h1" align="center">
+        Welcome My Dudes
+      </Typography>
+    </Container>
   );
 };
 
