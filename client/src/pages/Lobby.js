@@ -4,7 +4,7 @@ import { TextField, Button } from "@material-ui/core";
 
 //for local testing, change to localhost:5000
 //the react proxy doesn't like socket connections
-const socket = io.connect("/");
+const socket = io.connect("http://localhost:5000");
 
 function Lobby(props) {
   const [message, setMessage] = useState({ message: "", name: "" });

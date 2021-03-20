@@ -1,5 +1,4 @@
 import React from "react";
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Lobby from "./pages/Lobby";
@@ -8,6 +7,7 @@ import Login from "./pages/Login";
 import Map from "./pages/Map";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
+import VideoConference from "./pages/VideoConference";
 
 function App(props) {
   return (
@@ -25,7 +25,7 @@ function App(props) {
         <Route exact path="/signup">
           <Signup />
         </Route>
-        <Route exact path="/Leaderboard">
+        <Route exact path="/leaderboard">
           <Leaderboard />
         </Route>
         <Route exact path="/map">
@@ -33,6 +33,9 @@ function App(props) {
         </Route>
         <Route exact path="/profile">
           <Profile />
+        </Route>
+        <Route exact path="/video-conference">
+          <VideoConference />
         </Route>
       </Switch>
     </Router>
