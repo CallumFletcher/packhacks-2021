@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import {
   Container,
   Typography,
@@ -26,6 +27,7 @@ const useStyles = makeStyles({
 });
 
 const Signup = (props) => {
+  const history = useHistory();
   const classes = useStyles();
   const [userInfo, setUserInfo] = useState({
     username: "",
@@ -42,18 +44,24 @@ const Signup = (props) => {
       setError(false);
     }
   }, [userInfo.password, confirmPassword]);
+
   function handleSend() {
     axios
       .post("http://localhost:5000/api/user/register", userInfo)
       .then((response) => {
         console.log(response);
+        if (response.status === 200) {
+          history.push("/map");
+        }
       })
       .catch((error) => console.log(error));
   }
+
   function handleChange(e) {
     e.persist();
     setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
+
   return (
     <Container className={classes.root}>
       <Typography variant="h3" align="center" style={{ paddingTop: 100 }}>

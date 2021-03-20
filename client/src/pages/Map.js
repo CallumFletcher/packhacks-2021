@@ -1,18 +1,29 @@
 import React from "react";
-import { Container, Typography, makeStyles } from "@material-ui/core";
-
-const useStyles = makeStyles({
-  root: {
-    display: "flex",
-  },
-});
+import { useHistory } from "react-router-dom";
+import { Container, Typography, Button } from "@material-ui/core";
 
 const Map = (props) => {
+  const history = useHistory();
+
+  function handleCalc() {
+    history.push("/lobby");
+  }
+
+  function handleLinAlg() {
+    history.push("/lobby");
+  }
+
   return (
     <Container>
       <Typography variant="h2" align="center">
-        map of lobbies will go here
+        Map of lobbies will go here
       </Typography>
+      <Button variant="contained" color="primary" onClick={handleCalc}>
+        Math 117
+      </Button>
+      <Button variant="contained" color="primary" onClick={handleLinAlg}>
+        Math 115
+      </Button>
     </Container>
   );
 };

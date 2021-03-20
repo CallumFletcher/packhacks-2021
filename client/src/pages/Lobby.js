@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 import { TextField, Button } from "@material-ui/core";
+import VideoConference from "../components/VideoConference";
 
 //for local testing, change to localhost:5000
 //the react proxy doesn't like socket connections
@@ -27,6 +28,7 @@ function Lobby(props) {
         width: "100%",
       }}
     >
+      <VideoConference />
       <TextField
         style={{ paddingBottom: 10 }}
         variant="outlined"

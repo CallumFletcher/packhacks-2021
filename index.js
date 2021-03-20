@@ -26,8 +26,10 @@ const io = socketIo(server, { cors: { origin: "*" } });
 app.use(express.json());
 
 //routes
-const authRoute = require("./routes/auth");
+const authRoute = require("./api/routes/auth");
+const roomRoute = require("./api/routes/room");
 app.use("/api/user", authRoute);
+app.use("/api/room", roomRoute);
 
 //basic chat stuff, needs to be changed
 io.on("connection", (socket) => {
@@ -42,9 +44,8 @@ io.on("connection", (socket) => {
     console.log("messsage sent");
     io.emit("message", message);
   });
-  
-
 });
+
 app.use(express.static(path.join(__dirname, "client/build")));
 
 app.get("*", (req, res) => {

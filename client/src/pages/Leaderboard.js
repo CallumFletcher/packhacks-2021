@@ -1,12 +1,6 @@
 import React from "react";
 import { Container, Typography, makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles({
-  root: {
-    display: "flex",
-  },
-});
-
 const Leaderboard = (props) => {
   return (
     <Container>

@@ -10,3 +10,5 @@ function verify(req, res, next) {
     res.status(400).send("😞 invalid token");
   }
 }
+
+module.exports = { verify };
