@@ -18,6 +18,12 @@ function VideoConference(props) {
         roomName={roomName}
         displayName={name}
         config={{ prejoinPageEnabled: false }}
+        containerStyle={{
+          width: "90%",
+          paddingBottom: 50,
+          marginTop: 0,
+          margin: 25,
+        }}
       />
     </React.Fragment>
   );

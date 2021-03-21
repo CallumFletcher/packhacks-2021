@@ -13,12 +13,12 @@ const Lobby = require("./api/models/Lobby");
 const server = http.createServer(app);
 const io = socketIo(server, { cors: { origin: "*" } });
 
-  const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-  app.use(cors()); 
-  app.options("*", cors());
+app.use(cors());
+app.options("*", cors());
 
-  dotenv.config();
+dotenv.config();
 
 //db connection
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () =>
@@ -38,35 +38,20 @@ const leaderboardRoute = require("./api/routes/leaderboard");
 app.use("/api/leaderboard", leaderboardRoute);
 
 //basic chat stuff, needs to be changed
-  /*
-  io.emit("message", { message: "User joined", name: "server" });
-
+io.on("connection", (socket) => {
+  console.log("new connection");
 
   socket.on("disconnect", () => {
-    io.emit("message", { message: "User disconected", name: "server"});
+    io.emit("message", "user has left");
   });
 
-  */
-  io.on("connection", (socket) => {
-  
-    // Join a conversation
-    const { roomId } = socket.handshake.query;
-    socket.join(roomId);
-  
-    // New user join
-      // io.in(roomId).emit("newChatMessage", { message: "User joined", name: "server" });
-
-    // Listen for new messages
-    socket.on("newChatMessage", (message) => {
-      io.in(roomId).emit("newChatMessage", message);
-    });
-  
-    // Leave the room if the user closes the socket
-    socket.on("disconnect", () => {
-      socket.leave(roomId);
-      io.in(roomId).emit("newChatMessage", { message: "User disconected", name: "server"});
-    });
+  socket.on("message", (message) => {
+    console.log(message, "BACKEND");
+    io.emit("message", message);
   });
+});
+
+//serves react app
 
 app.use(express.static(path.join(__dirname, "client/build")));
 
