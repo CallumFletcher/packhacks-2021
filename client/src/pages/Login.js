@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import React, { useState, useContext } from "react";
 import {
   Container,
   Typography,
@@ -10,6 +10,8 @@ import {
   Grid,
 } from "@material-ui/core";
 import axios from "axios";
+import { store } from "../store";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -27,23 +29,31 @@ const useStyles = makeStyles({
 });
 
 const Signup = (props) => {
+  const history = useHistory();
   const classes = useStyles();
   const history = useHistory();
   const [userInfo, setUserInfo] = useState({
     username: "",
     password: "",
   });
-
+  const globalState = useContext(store);
+  const { dispatch } = globalState;
   function handleSend() {
     axios
-      .post("http://localhost:5000/api/user/login", userInfo)
+      .post("/api/user/login", userInfo)
       .then((response) => {
+        dispatch({
+          type: "setUser",
+          payload: { username: userInfo.username, jwt: response.data },
+        });
         console.log(response);
         if (response.status === 200) {
           history.push("/map");
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        alert("Incorrect Username or Password");
+      });
   }
   function handleChange(e) {
     e.persist();
@@ -52,7 +62,7 @@ const Signup = (props) => {
   return (
     <Container className={classes.root}>
       <Typography variant="h3" align="center" style={{ paddingTop: 100 }}>
-        Create An Account
+        Log In
       </Typography>
       <Paper className={classes.paper} elevation={10}>
         <Grid container spacing={2}>

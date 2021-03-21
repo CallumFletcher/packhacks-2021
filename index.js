@@ -32,6 +32,9 @@ const roomRoute = require("./api/routes/room");
 app.use("/api/user", authRoute);
 app.use("/api/room", roomRoute);
 
+const leaderboardRoute = require("./routes/leaderboard");
+app.use("/api/leaderboard", leaderboardRoute);
+
 //basic chat stuff, needs to be changed
 io.on("connection", (socket) => {
   console.log("new connection");

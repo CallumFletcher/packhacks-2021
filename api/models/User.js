@@ -14,6 +14,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  score: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
   userCreated: {
     type: Date,
     default: Date.now,
