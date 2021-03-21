@@ -49,9 +49,6 @@ function App(props) {
         <Route exact path="/contact">
           <Contact />
         </Route>
-        <Route exact path="/:roomId">
-          <ChatRoom />
-        </Route>
       </Switch>
     </Router>
   );

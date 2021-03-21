@@ -8,7 +8,7 @@
   }
   
   html {
-    font-size: 80%;
+    font-size: 100%;
   }
 
   .contact {
@@ -32,7 +32,7 @@
     background-repeat: no-repeat;
     background-position: center top;
     padding-bottom: 7%;
-    row-gap: 1%;
+    row-gap: 0.5%;
   }
 
 .back-img {

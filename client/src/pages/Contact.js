@@ -23,7 +23,7 @@ const Contact = (props) => {
           type="name"
           variant="filled"
           color="primary"
-          style = {{width: 300, background: "lightblue"}}
+          style = {{width: 300}}
           InputLabelProps={{
             style: {
               textOverflow: 'ellipsis',
@@ -31,7 +31,6 @@ const Contact = (props) => {
               overflow: 'hidden',
               width: '100%',
               color: 'black',
-              opacity: 1,
             }
           }}
         />
@@ -41,7 +40,7 @@ const Contact = (props) => {
           type="email"
           variant="filled"
           color="primary"
-          style = {{width: 300, background: "lightblue"}}
+          style = {{width: 300}}
           InputLabelProps={{
             style: {
               textOverflow: 'ellipsis',
@@ -58,7 +57,7 @@ const Contact = (props) => {
           type="text"
           variant="filled"
           color="primary"
-          style = {{width: 300, background: "lightblue"}}
+          style = {{width: 300}}
           InputLabelProps={{
             style: {
               textOverflow: 'ellipsis',
@@ -66,7 +65,6 @@ const Contact = (props) => {
               overflow: 'hidden',
               width: '100%',
               color: 'black',
-              fontsize: 5
             }
           }}
         />

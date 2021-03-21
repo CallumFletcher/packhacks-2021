@@ -37,7 +37,7 @@ const useStyles = makeStyles({
   },
 });
 
-const socket = io.connect("/");
+const socket = io.connect("http://localhost:5000");
 
 function Lobby(props) {
   const [showVideo, setShowVideo] = useState(false);
@@ -88,7 +88,7 @@ function Lobby(props) {
       const userName = globalState.state.username;
       console.log("NICE");
       await axios
-        .patch(`localhost:5000/api/room/unsubscribe/${id}`, {
+        .patch(`http://localhost:5000/api/room/unsubscribe/${id}`, {
           username: userName,
         })
         .then((response) => console.log(response))
