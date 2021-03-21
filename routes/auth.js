@@ -2,6 +2,7 @@ const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const verify = require("./verify");
 
 router.post("/register", async (req, res) => {
   const salt = await bcrypt.genSalt(10);
@@ -10,6 +11,7 @@ router.post("/register", async (req, res) => {
     username: req.body.username,
     password: hashPassword,
     role: req.body.role,
+    score: Math.floor(Math.random() * 100000),
   });
   try {
     const usernameTaken = await User.findOne({ username: req.body.username });
@@ -41,6 +43,28 @@ router.post("/login", async (req, res) => {
   } catch (error) {
     res.status(400).send("😢 something 😭 went 😤 wrong 😠 with 😡 request 🤬");
   }
+});
+router.post("/score/change", verify, async (req, res) => {
+  if (!req.body.score) {
+    res.status(400).send("😢 something 😭 went 😤 wrong 😠 with 😡 request 🤬");
+  } else {
+    User.findByIdAndUpdate(req.user, { score: req.body.score });
+    res.send(200);
+  }
+
+  //   res.send({ updatedScore: req.body.score });
+});
+router.post("/score/increment", verify, async (req, res) => {
+  if (!req.body.score) {
+    res.status(400).send("😢 something 😭 went 😤 wrong 😠 with 😡 request 🤬");
+  } else {
+    let score = await User.findById(req.user);
+    score = score.score;
+    score += req.body.score;
+    res.send(200);
+  }
+
+  //   res.send({ updatedScore: req.body.score });
 });
 
 module.exports = router;

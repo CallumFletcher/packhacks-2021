@@ -32,6 +32,8 @@ app.use(express.json());
 const authRoute = require("./routes/auth");
 app.use("/api/user", authRoute);
 
+const leaderboardRoute = require("./routes/leaderboard");
+app.use("/api/leaderboard", leaderboardRoute);
 
 //basic chat stuff, needs to be changed
   /*
