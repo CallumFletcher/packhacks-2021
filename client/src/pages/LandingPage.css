@@ -1,0 +1,287 @@
+@keyframes animateTitle {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.title {
+    background: url("../assets/StudyVilleLogo.svg") no-repeat;
+    background-size: contain;
+	position: absolute;
+    top: 48vh;
+    left: 30vw;
+    height: 40vw;
+    width: 40vw;
+    -webkit-animation: animateTitle 40s linear infinite;
+	-moz-animation: animateTitle 40s linear infinite;
+	animation: animateTitle 40s linear infinite;
+}
+
+
+.aboutCloud {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  height: auto;
+  width: 30vw;
+}
+
+.aboutCloud:hover {
+  width: 32vw;
+  filter: hue-rotate(220deg);
+}
+
+.contactCloud {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  height: auto;
+  width: 30vw;
+  position: "absolute";
+}
+
+.contactCloud:hover {
+  width: 32vw;
+  filter: hue-rotate(100deg);
+  position: "absolute";
+  z-index: 1;
+}
+
+.signupCloud {
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  height: auto;
+  width: 30vw;
+  position: "absolute";
+  z-index: 1;
+}
+
+.signupCloud:hover {
+  width: 32vw;
+  filter: hue-rotate(280deg);
+  position: "absolute";
+  z-index: 1;
+}
+
+.loginCloud {
+  bottom: 10%;
+  right: 5%;
+  position: absolute;
+  height: auto;
+  width: 30vw;
+  position: "absolute";
+  z-index: 1;
+}
+
+.loginCloud:hover {
+  width: 32vw;
+  filter: hue-rotate(50deg);
+  position: "absolute";
+  z-index: 1;
+}
+
+#background-wrap {
+    margin: 0;
+    bottom: 0;
+	left: 0;
+    right: 0;
+	top: 0;
+	position: fixed;
+	z-index: -1;
+}
+
+/* KEYFRAMES */
+
+/* FORWARDS */
+
+@-webkit-keyframes animateCloud {
+    0% {
+        margin-left: -45%;
+    }
+    100% {
+        margin-left: 125%;
+    }
+}
+
+@-moz-keyframes animateCloud {
+    0% {
+        margin-left: -45%;
+    }
+    100% {
+        margin-left: 125%;
+    }
+}
+
+@keyframes animateCloud {
+    0% {
+        margin-left: -45%;
+    }
+    100% {
+        margin-left: 125%;
+    }
+}
+
+/* REVERSE */
+
+@-webkit-keyframes animateCloudReverse {
+    0% {
+        margin-right: -1280%;
+    }
+    100% {
+        margin-left: -40%;
+    }
+}
+
+@-moz-keyframes animateCloudReverse {
+    0% {
+        margin-right: -1280%;
+    }
+    100% {
+        margin-left: -40%;
+    }
+}
+
+@keyframes animateCloudReverse {
+    0% {
+        margin-right: -1280%;
+    }
+    100% {
+        margin-left: -100%;
+    }
+}
+
+/* ANIMATIONS */
+
+.x1 {
+	-webkit-animation: animateCloud 40s linear infinite;
+	-moz-animation: animateCloud 40s linear infinite;
+	animation: animateCloud 40s linear infinite;
+	
+	-webkit-transform: scale(0.95);
+	-moz-transform: scale(0.95);
+	transform: scale(0.95);
+    
+}
+
+.x2 {
+	-webkit-animation: animateCloudReverse 30s linear infinite;
+	-moz-animation: animateCloudReverse 30s linear infinite;
+	animation: animateCloudReverse 30s linear infinite;
+	
+	-webkit-transform: scale(0.7);
+	-moz-transform: scale(0.7);
+	transform: scale(0.7);
+}
+
+.x3 {
+	-webkit-animation: animateCloud 30s linear infinite;
+	-moz-animation: animateCloud 30s linear infinite;
+	animation: animateCloud 30s linear infinite;
+	
+	-webkit-transform: scale(0.65);
+	-moz-transform: scale(0.65);
+	transform: scale(0.65);
+}
+
+.x4 {
+	-webkit-animation: animateCloudReverse 40s linear infinite;
+	-moz-animation: animateCloudReverse 40s linear infinite;
+	animation: animateCloudReverse 40s linear infinite;
+	
+	-webkit-transform: scale(0.85);
+	-moz-transform: scale(0.85);
+	transform: scale(0.85);
+}
+
+.x5 {
+	-webkit-animation: animateCloud 20s linear infinite;
+	-moz-animation: animateCloud 20s linear infinite;
+	animation: animateCloud 20s linear infinite;
+	
+	-webkit-transform: scale(0.75);
+	-moz-transform: scale(0.75);
+	transform: scale(0.75);
+}
+
+.x6 {
+	-webkit-animation: animateCloud 50s linear infinite;
+	-moz-animation: animateCloud 50s linear infinite;
+	animation: animateCloud 50s linear infinite;
+	
+	-webkit-transform: scale(0.95);
+	-moz-transform: scale(0.95);
+	transform: scale(0.95);
+}
+
+.x7 {
+	-webkit-animation: animateCloudReverse 40s linear infinite;
+	-moz-animation: animateCloudReverse 40s linear infinite;
+	animation: animateCloudReverse 40s linear infinite;
+	
+	-webkit-transform: scale(0.7);
+	-moz-transform: scale(0.7);
+	transform: scale(0.7);
+}
+
+.x8 {
+	-webkit-animation: animateCloudReverse 80s linear infinite;
+	-moz-animation: animateCloudReverse 80s linear infinite;
+	animation: animateCloudReverse 80s linear infinite;
+	
+	-webkit-transform: scale(0.7);
+	-moz-transform: scale(0.7);
+	transform: scale(0.7);
+}
+
+
+
+/* OBJECTS */
+
+.cloud1 {
+    background: url("../assets/BackgroundCloud1.png") no-repeat;
+    background-size: contain;
+	position: absolute;
+    top: 20vh;
+    height: 20vw;
+    width: 20vw;
+    filter: blur(1px);
+    filter: contrast(80%);
+}
+
+.cloud2 {
+    background: url("../assets/BackgroundCloud2.png") no-repeat;
+    background-size: contain;
+	position: absolute;
+    top: 60vh;
+    height: 20vw;
+    width: 20vw;
+    filter: blur(1px);
+    filter: contrast(80%);
+}
+
+.cloud3 {
+    background: url("../assets/BackgroundCloud3.png") no-repeat;
+    background-size: contain;
+	position: absolute;
+    top: 85vh;
+    height: 20vw;
+    width: 20vw;
+    filter: blur(1px);
+    filter: contrast(80%);
+}
+
+.cloud4 {
+    background: url("../assets/BackgroundCloud4.png") no-repeat;
+    background-size: contain;
+	position: absolute;
+    top: 95vh;
+    height: 20vw;
+    width: 20vw;
+    filter: blur(1px);
+    filter: contrast(80%);
+}
+

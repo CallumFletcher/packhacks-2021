@@ -7,9 +7,12 @@ import Login from "./pages/Login";
 import Map from "./pages/Map";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import VideoConference from "./pages/VideoConference";
 import ChatRoom from "./ChatRooms/ChatRoom";
 import ChatHomeRoom from "./ChatRooms/ChatsHomeRoom";
+
 
 function App(props) {
   return (
@@ -44,6 +47,12 @@ function App(props) {
         </Route>
         <Route exact path="/:roomId">
           <ChatRoom />
+        </Route>
+        <Route exact path="/about">
+          <About />
+        </Route>
+        <Route exact path="/contact">
+          <Contact />
         </Route>
       </Switch>
     </Router>
