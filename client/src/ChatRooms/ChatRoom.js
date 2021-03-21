@@ -76,7 +76,7 @@ function ChatRoom() {
             rowGap: "10px",
           }}
         >
-          <h1 className="room-name"> Wellcom to {room} </h1>
+          <h1 className="room-name"> Welcome to {room} </h1>
         </div>
         <TextField
           syle={{
