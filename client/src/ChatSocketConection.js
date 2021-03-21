@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 
+<<<<<<< Updated upstream
 const SOCKET_SERVER_URL = "/";
+=======
+
+const SOCKET_SERVER_URL = "http://localhost:5000";
+>>>>>>> Stashed changes
 
 const ChatSocketConection = (roomId) => {
   const [messages, setMessages] = useState([]);
@@ -15,12 +20,8 @@ const ChatSocketConection = (roomId) => {
 
     // Listens for incoming messages
     socketRef.current.on("newChatMessage", (message) => {
-      const incomingMessage = {
-        ...message,
-        ownedByCurrentUser: message.senderId === socketRef.current.id,
-      };
-      console.log(incomingMessage);
-      setMessages((messages) => [...messages, incomingMessage]);
+      console.log(message);
+      setMessages((messages) => [...messages, message]);
     });
 
     // Destroys the socket reference

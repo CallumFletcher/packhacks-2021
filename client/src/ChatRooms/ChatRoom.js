@@ -4,6 +4,7 @@ import "./ChatRoom.css";
 import { useParams } from "react-router-dom";
 import ChatSocketConection from "../ChatSocketConection";
 
+<<<<<<< Updated upstream
 function ChatRoom() {
   const room = useParams().roomId;
   const [message, setMessage] = useState({ message: "", name: "" });
@@ -11,17 +12,19 @@ function ChatRoom() {
   const [chat, setChat] = useState([]);
   */
   const { messages, sendMessage } = ChatSocketConection(room);
+=======
 
-  /*
-  useEffect(() => {
-    socket.on("message", (message) => {
-      setChat((prev) => [...prev, message]);
-      console.log(message);
-    });
-  }, []);
-  */
+
+function ChatRoom() {
+  const room = useParams().roomId;
+  const [message, setMessage] = useState({ message: "", name: "" });
+  
+  const { messages, sendMessage } = ChatSocketConection(room);
+  
+>>>>>>> Stashed changes
 
   const handleSendMessage = () => {
+    console.log(message);
     sendMessage(message);
     setMessage((prev) => ({ ...prev, message: "" }));
   };
@@ -35,6 +38,7 @@ function ChatRoom() {
         position: "relative",
       }}
     >
+<<<<<<< Updated upstream
       <div
         className="chat-container-left"
         style={{
@@ -64,6 +68,22 @@ function ChatRoom() {
         >
           <h1 className="room-name"> Wellcom to {room} </h1>
         </div>
+=======
+
+        <h1 className="room-name"> Wellcom to {room} </h1>
+          <TextField
+            syle={{
+               paddingBottom: 10 
+              }}
+            variant="outlined"
+            placeholder="name"
+            value={message.name}
+            onChange={(e) => {
+            setMessage((prev) => ({ ...prev, name: e.target.value }));
+          }}
+        />
+       
+>>>>>>> Stashed changes
         <TextField
           syle={{
             paddingBottom: 10,
@@ -97,6 +117,7 @@ function ChatRoom() {
           }
         >
           Submit
+<<<<<<< Updated upstream
         </Button>
       </div>
       <div
@@ -132,6 +153,35 @@ function ChatRoom() {
               <p>{message.messageBody.message}</p>{" "}
               <p>-{message.messageBody.name}</p>
             </span>
+=======
+        </Button>  
+    </div>
+    <div className="chat-container-right"
+      style={{
+        backgroundColor: 'white',
+        position: 'absolute',
+        display: 'block',
+        right: '40px',
+        top: '40%',
+        marginTop: '-240px',
+        height: 600,
+        width: 1000,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        overflow: "scroll",
+        borderRadius: '5rem',
+        overflowX: 'hidden' /* Hide horizontal scrollbar */,
+      }}
+    >
+      {messages && messages.map((message) => (
+            <div className="chat-element" style={{ position: 'relative', margin: 0, padding: 0, left: '40px' }}>
+              <span id ="users">
+                {console.log(message)}
+                <p>{message.messageBody.message}</p> <p>-{message.messageBody.name}</p>
+                
+              </span>
+>>>>>>> Stashed changes
           </div>
         ))}
       </div>

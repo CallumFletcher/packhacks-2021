@@ -53,6 +53,7 @@ app.use("/api/leaderboard", leaderboardRoute);
     const { roomId } = socket.handshake.query;
     socket.join(roomId);
   
+    
     // New user join
     io.in(roomId).emit("newChatMessage", { message: "User joined", name: "server" });
 
