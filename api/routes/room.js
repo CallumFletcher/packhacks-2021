@@ -2,9 +2,16 @@ const router = require("express").Router();
 const Room = require("../models/Room");
 const User = require("../models/User");
 
+router.get("/z/:id", async (req, res) => {
+  const roomInfo = await Room.findOne({ _id: req.params.id });
+  if (roomInfo) {
+    res.send(roomInfo).status(200);
+  } else {
+    res.send("SADDDDDDDD!").status(400);
+  }
+});
 router.get("/:name", async (req, res) => {
   const roomInfo = await Room.findOne({ name: req.params.name });
-  console.log(roomInfo._id);
   if (roomInfo) {
     res.send({ response: roomInfo._id }).status(200);
   } else {
