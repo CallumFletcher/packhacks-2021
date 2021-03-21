@@ -10,7 +10,6 @@ import {
   Grid,
 } from "@material-ui/core";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -49,7 +48,7 @@ const Signup = (props) => {
 
   function handleSend() {
     axios
-      .post("/api/user/register", userInfo)
+      .post("http://localhost:5000/api/user/register", userInfo)
       .then((response) => {
         console.log(response);
         if (response.status === 200) {

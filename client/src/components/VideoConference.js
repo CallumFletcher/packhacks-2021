@@ -10,7 +10,6 @@ function VideoConference(props) {
 
   const handleAPI = (JitsiMeetAPI) => {
     console.log(JitsiMeetAPI);
-    console.log(globalState);
   };
 
   return (

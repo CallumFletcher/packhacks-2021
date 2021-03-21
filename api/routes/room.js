@@ -12,13 +12,38 @@ router.get("/:name", async (req, res) => {
   }
 });
 
-router.patch("/subscribe/:user", async (req, res) => {
-  const userInfo = req.params.user;
-  console.log(userInfo);
-  //let roomInfo = await Room.findOne({ name: req.params.name });
-  //console.log(roomInfo);
-  //const newUser = new User({});
-  //roomInfo.subscriberList.append(newUser);
+router.patch("/subscribe/:room", async (req, res) => {
+  const roomId = req.params.room;
+  const userName = req.body.username;
+  console.log(roomId);
+  console.log(req.body);
+  let roomInfo = await Room.findOne({ _id: req.params.room });
+  console.log(roomInfo);
+  let userList = roomInfo.subscriberList;
+  if (!userList.includes(userName)) {
+    userList.push(userName);
+  }
+  console.log(userList);
+  await roomInfo.updateOne({
+    subscriberList: userList,
+  });
+});
+
+router.patch("/unsubscribe/:room", async (req, res) => {
+  const roomId = req.params.room;
+  const userName = req.body.username;
+  console.log(roomId);
+  console.log(req.body);
+  let roomInfo = await Room.findOne({ _id: req.params.room });
+  console.log(roomInfo);
+  let userList = roomInfo.subscriberList;
+  if (userList.includes(userName)) {
+    userList.remove(userName);
+  }
+  console.log(userList);
+  await roomInfo.updateOne({
+    subscriberList: userList,
+  });
 });
 
 router.post("/create-room", async (req, res) => {

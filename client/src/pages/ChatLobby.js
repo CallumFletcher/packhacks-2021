@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import io from "socket.io-client";
 import { TextField, Button } from "@material-ui/core";
+import axios from "axios";
 import VideoConference from "../components/VideoConference";
+import { store } from "../store.js";
 
 //for local testing, change to localhost:5000
 //the react proxy doesn't like socket connections
@@ -12,13 +15,37 @@ function Lobby(props) {
   const [message, setMessage] = useState({ message: "", name: "" });
   const [chat, setChat] = useState([]);
 
+  const history = useHistory();
+
+  const globalState = useContext(store);
+
   const { id } = useParams();
 
   useEffect(() => {
+    const userName = globalState.state.username;
+    axios
+      .patch(`http://localhost:5000/api/room/subscribe/${id}`, {
+        username: userName,
+      })
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
     socket.on("message", (message) => {
       setChat((prev) => [...prev, message]);
       console.log(message);
     });
+
+    const memes = async () => {
+      const userName = globalState.state.username;
+      console.log("NICE");
+      await axios
+        .patch(`http://localhost:5000/api/room/unsubscribe/${id}`, {
+          username: userName,
+        })
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error));
+    };
+
+    return () => memes();
   }, []);
 
   return (
@@ -78,6 +105,14 @@ function Lobby(props) {
         }}
       >
         Submit
+      </Button>
+      <Button
+        variant="contained"
+        onClick={() => {
+          history.push("/map");
+        }}
+      >
+        Nice
       </Button>
     </div>
   );

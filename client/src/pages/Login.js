@@ -11,8 +11,6 @@ import {
 } from "@material-ui/core";
 import axios from "axios";
 import { store } from "../store";
-import { useHistory } from "react-router-dom";
-
 const useStyles = makeStyles({
   root: {
     display: "flex",
@@ -29,7 +27,6 @@ const useStyles = makeStyles({
 });
 
 const Signup = (props) => {
-  const history = useHistory();
   const classes = useStyles();
   const history = useHistory();
   const [userInfo, setUserInfo] = useState({
@@ -40,7 +37,7 @@ const Signup = (props) => {
   const { dispatch } = globalState;
   function handleSend() {
     axios
-      .post("/api/user/login", userInfo)
+      .post("http://localhost:5000/api/user/login", userInfo)
       .then((response) => {
         dispatch({
           type: "setUser",
