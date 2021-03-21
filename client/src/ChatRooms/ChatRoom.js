@@ -7,7 +7,7 @@ const socket = io.connect("localhost:5000");
 const chatName = "localhost:5000";
 
 function ChatRoom(props) {
-  const [message, setMessage] = useState({ message: "", name: "" });
+  const [message, setMessage] = useState({ message: "" });
   const [chat, setChat] = useState([]);
 
   useEffect(() => {
@@ -53,17 +53,6 @@ function ChatRoom(props) {
         >
           <h1>{`Wellcome to ${chatName}`}</h1>
         </div>
-        <TextField
-          syle={{
-            paddingBottom: 10,
-          }}
-          variant="outlined"
-          placeholder="name"
-          value={message.name}
-          onChange={(e) => {
-            setMessage((prev) => ({ ...prev, name: e.target.value }));
-          }}
-        />
         <TextField
           placeholder="message"
           multiline

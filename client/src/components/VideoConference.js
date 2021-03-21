@@ -4,8 +4,7 @@ import Jitsi from "react-jitsi";
 
 function VideoConference(props) {
   const globalState = useContext(store);
-  const roomName =
-    "my-super-secret-meeting-123e4567-e89b-12d3-a456-426655440000";
+  const roomName = props.room;
   const name = globalState.state.username;
 
   const handleAPI = (JitsiMeetAPI) => {

@@ -29,6 +29,7 @@ function Lobby(props) {
       })
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
+
     socket.on("message", (message) => {
       setChat((prev) => [...prev, message]);
       console.log(message);
@@ -58,7 +59,7 @@ function Lobby(props) {
         width: "100%",
       }}
     >
-      <VideoConference />
+      <VideoConference room={id} />
       <TextField
         style={{ paddingBottom: 10 }}
         variant="outlined"
