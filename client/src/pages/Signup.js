@@ -9,6 +9,7 @@ import {
   Grid,
 } from "@material-ui/core";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -26,11 +27,13 @@ const useStyles = makeStyles({
 });
 
 const Signup = (props) => {
+  const history = useHistory();
   const classes = useStyles();
   const [userInfo, setUserInfo] = useState({
     username: "",
     password: "",
     role: "",
+    score: 0,
   });
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(false);
@@ -44,9 +47,10 @@ const Signup = (props) => {
   }, [userInfo.password, confirmPassword]);
   function handleSend() {
     axios
-      .post("http://localhost:5000/api/user/register", userInfo)
+      .post("/api/user/register", userInfo)
       .then((response) => {
         console.log(response);
+        history.push("/login");
       })
       .catch((error) => console.log(error));
   }
