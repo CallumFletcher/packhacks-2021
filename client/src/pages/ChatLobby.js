@@ -12,7 +12,7 @@ import { store } from "../store.js";
 const socket = io.connect("/");
 
 function Lobby(props) {
-  const [message, setMessage] = useState({ message: "", name: "" });
+  const [message, setMessage] = useState("");
   const [chat, setChat] = useState([]);
 
   const history = useHistory();
@@ -20,6 +20,17 @@ function Lobby(props) {
   const globalState = useContext(store);
 
   const { id } = useParams();
+
+  const handleMessage = (event) => {
+    setMessage(event.target.value);
+  };
+
+  const handleUpdateChat = () => {
+    //setChat((chat) => [...chat, message]);
+    socket.emit("message", { message: message, id: id });
+    console.log("HANDLE UPDATE CHAT");
+    setMessage("");
+  };
 
   useEffect(() => {
     const userName = globalState.state.username;
@@ -29,9 +40,13 @@ function Lobby(props) {
       })
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
+
     socket.on("message", (message) => {
-      setChat((prev) => [...prev, message]);
-      console.log(message);
+      if (message.id === id) {
+        console.log(message.message, "FINALLY");
+        setChat((prev) => [...prev, message.message]);
+      }
+      //console.log([...chat, message]);
     });
 
     const memes = async () => {
@@ -58,16 +73,7 @@ function Lobby(props) {
         width: "100%",
       }}
     >
-      <VideoConference />
-      <TextField
-        style={{ paddingBottom: 10 }}
-        variant="outlined"
-        placeholder="name"
-        value={message.name}
-        onChange={(e) => {
-          setMessage((prev) => ({ ...prev, name: e.target.value }));
-        }}
-      />
+      <VideoConference room={id} />
       <div
         style={{
           height: 700,
@@ -82,7 +88,7 @@ function Lobby(props) {
         {chat.map((message) => (
           <div style={{ margin: 0, padding: 0 }}>
             <span>
-              <p>{message.message}</p> <p>-{message.name}</p>
+              <p>{message}</p>
             </span>
           </div>
         ))}
@@ -91,21 +97,19 @@ function Lobby(props) {
         placeholder="message"
         style={{ width: 300 }}
         variant="outlined"
-        value={message.message}
-        onChange={(e) => {
-          setMessage((prev) => ({ ...prev, message: e.target.value }));
-        }}
+        value={message}
+        onChange={handleMessage}
       />
       <Button
         variant="contained"
         onClick={(e) => {
           e.preventDefault();
-          socket.emit("message", message);
-          setMessage((prev) => ({ ...prev, message: "" }));
+          handleUpdateChat();
         }}
       >
-        Submit
+        Send
       </Button>
+      <br />
       <Button
         variant="contained"
         onClick={() => {
