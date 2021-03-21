@@ -10,6 +10,13 @@ import {
   Button,
   Grid,
 } from "@material-ui/core";
+import Background from "../assets/HomeBackground.png";
+import AboutCloud from "../assets/AboutCloud.png";
+import ContactCloud from "../assets/ContactCloud.png";
+import SignupCloud from "../assets/SignupCloud.png";
+import LoginCloud from "../assets/LoginCloud.png";
+import "./LandingPage.css";
+import "./App.css";
 import axios from "axios";
 
 const useStyles = makeStyles({
@@ -64,10 +71,46 @@ const Signup = (props) => {
   }
 
   return (
-    <Container className={classes.root}>
-      <Typography variant="h3" align="center" style={{ paddingTop: 100 }}>
+    <Container className={classes.root}       style={{
+      backgroundImage: `url(${Background})`,
+      imageRendering: "pixelated",
+      backgroundSize: "100% 100%",
+      backgroundRepeat: "no-repeat",
+      minHeight: "100vh",
+      minWidth: "100%",
+      position: "fixed",
+      top: 0,
+      left: 0,
+      paddingBottom: '20vh'
+    }}>
+      <Typography className = {"modal-title"} variant="h3" align="center" style={{ paddingTop: 100 }}>
         Create An Account
       </Typography>
+      <div id="background-wrap">
+        <div class="x1">
+          <div class="cloud1"></div>
+        </div>
+
+        <div class="x2">
+          <div class="cloud2"></div>
+        </div>
+
+        <div class="x3">
+          <div class="cloud3"></div>
+        </div>
+
+        <div class="x4">
+          <div class="cloud4"></div>
+        </div>
+
+        <div class="x5">
+          <div class="cloud1"></div>
+        </div>
+
+        <div class="x6">
+          <div class="cloud2"></div>
+        </div>
+        </div>
       <Paper className={classes.paper} elevation={10}>
         <Grid container spacing={2}>
           <Grid item xs={12}>

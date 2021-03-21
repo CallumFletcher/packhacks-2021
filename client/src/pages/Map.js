@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { Container, Typography, Button } from "@material-ui/core";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Background from '../assets/Water.png';
+import Background from "../assets/Water.png";
 import Chemistry from "../assets/Chemistry.png";
 import Professionalism from "../assets/Professionalism.png";
 import Arts from "../assets/Arts.png";
@@ -12,9 +12,9 @@ import Break from "../assets/Break.png";
 import Calculus from "../assets/Calculus.png";
 import Physics from "../assets/Physics.png";
 import Trophy from "../assets/Trophy.png";
-import SignupCloud from "../assets/SignupCloud.png";
-import LoginCloud from "../assets/LoginCloud.png";
-import "./Map.css"
+import Back from "../assets/Back.png";
+
+import "./Map.css";
 
 const Map = (props) => {
   const history = useHistory();
@@ -35,28 +35,28 @@ const Map = (props) => {
 
   function handleChem() {
     axios
-      .get("/api/room/Materials Chemistry")
+      .get("http://localhost:5000/api/room/Materials Chemistry")
       .then((response) => lobbyNavigate(response.data.response))
       .catch((error) => console.log(error));
   }
 
   function handleLit() {
     axios
-      .get("/api/room/Literature")
+      .get("http://localhost:5000/api/room/Literature")
       .then((response) => lobbyNavigate(response.data.response))
       .catch((error) => console.log(error));
   }
 
   function handleStudy() {
     axios
-      .get("/api/room/Study Room")
+      .get("http://localhost:5000/api/room/Study Room")
       .then((response) => lobbyNavigate(response.data.response))
       .catch((error) => console.log(error));
   }
 
   function handleHangout() {
     axios
-      .get("/api/room/Hangout Room")
+      .get("http://localhost:5000/api/room/Hangout Room")
       .then((response) => lobbyNavigate(response.data.response))
       .catch((error) => console.log(error));
   }
@@ -67,59 +67,62 @@ const Map = (props) => {
 
   return (
     <Container
-    style={{
-      backgroundImage: `url(${Background})`,
-      imageRendering: "pixelated",
-      backgroundSize: "50% 50%",
-      backgroundRepeat: 'repeat',
-      minHeight: "100vh",
-      minWidth: "100%",
-      position: "fixed",
-      top: 0,
-      left: 0,
-    }}>
-      <div className = 'island'></div>
-      <img className="chemistry" src={Chemistry} alt="Chemistry" onClick={handlePhys}></img>
-      <img className="professionalism" src={Professionalism} alt="Professionalism" onClick={handlePhys}></img>
-      <img className="arts" src={Arts} alt="Arts" onClick={handlePhys}></img>
-      <img className="break" src={Break} alt="Break" onClick={handlePhys}></img>
-      <img className="calculus" src={Calculus} alt="About Us" onClick={handleCalc}></img>
-      <img className="physics" src={Physics} alt="Physics" onClick={handlePhys}></img>
-      <Link to={"/leaderboard"}>
-        <img className="trophy" src={Trophy} alt="About Us"></img>
-      </Link>
-      <div className = 'cloudGroup'></div>
-      
-      <Typography variant="h2" align="center">
-        Map of lobbies will go here
-      </Typography>
-      <Button variant="contained" color="primary" onClick={handleCalc}>
-        Calculus
-      </Button>
-      <Button variant="contained" color="primary" onClick={handlePhys}>
-        Classical Mechanics
-      </Button>
-      <Button variant="contained" color="primary" onClick={handleChem}>
-        Materials Chemistry
-      </Button>
-      <Button variant="contained" color="primary" onClick={handleLit}>
-        Literature
-      </Button>
-      <Button variant="contained" color="primary" onClick={handleStudy}>
-        Study Room
-      </Button>
-      <Button variant="contained" color="primary" onClick={handleHangout}>
-        Hangout Room
-      </Button>
-      <Button
-        variant="contained"
-        color="primary"
+      style={{
+        backgroundImage: `url(${Background})`,
+        imageRendering: "pixelated",
+        backgroundSize: "50% 50%",
+        backgroundRepeat: "repeat",
+        minHeight: "100vh",
+        minWidth: "100%",
+        position: "fixed",
+        top: 0,
+        left: 0,
+      }}
+    >
+      <div className="island"></div>
+      <img
+        className="chemistry"
+        src={Chemistry}
+        alt="Chemistry"
+        onClick={handleChem}
+      ></img>
+      <img
+        className="professionalism"
+        src={Professionalism}
+        alt="Professionalism"
+        onClick={handleStudy}
+      ></img>
+      <img className="arts" src={Arts} alt="Arts" onClick={handleLit}></img>
+      <img
+        className="break"
+        src={Break}
+        alt="Break"
+        onClick={handleHangout}
+      ></img>
+      <img
+        className="calculus"
+        src={Calculus}
+        alt="About Us"
+        onClick={handleCalc}
+      ></img>
+      <img
+        className="physics"
+        src={Physics}
+        alt="Physics"
+        onClick={handlePhys}
+      ></img>
+      <img
+        className="trophy"
+        src={Trophy}
+        alt="Leaderboard"
         onClick={() => {
           history.push("leaderboard");
         }}
-      >
-        Leaderboard
-      </Button>
+      ></img>
+      <Link to="/">
+        <img className="back" src={Back} alt="Back"></img>
+      </Link>
+      <div className="cloudGroup"></div>
     </Container>
   );
 };

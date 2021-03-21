@@ -67,12 +67,12 @@ function Lobby(props) {
     const userName = globalState.state.username;
     console.log("1");
     axios
-      .patch(`/api/room/subscribe/${id}`, {
+      .patch(`http://localhost:5000/api/room/subscribe/${id}`, {
         username: userName,
       })
       .then((response) => {})
       .catch((error) => console.log(error));
-    axios.get(`/api/room/z/${id}`).then((response) => {
+    axios.get(`http://localhost:5000/api/room/z/${id}`).then((response) => {
       setRoomInfo(response.data);
     });
 
@@ -88,7 +88,7 @@ function Lobby(props) {
       const userName = globalState.state.username;
       console.log("NICE");
       await axios
-        .patch(`/api/room/unsubscribe/${id}`, {
+        .patch(`localhost:5000/api/room/unsubscribe/${id}`, {
           username: userName,
         })
         .then((response) => console.log(response))
