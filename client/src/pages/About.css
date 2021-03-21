@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+  }
+  
+  
+  .about-us {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../assets/HomeBackground.png");
+  }
+
+  .about-us-wrapper-img {
+    width: 100%;
+    height: 95%;
+    
+    background-image: url("../assets/AboutBackground.png");
+    
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+
