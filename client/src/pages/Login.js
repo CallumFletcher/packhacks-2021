@@ -43,6 +43,7 @@ const Signup = (props) => {
           type: "setUser",
           payload: { username: userInfo.username, jwt: response.data },
         });
+        localStorage.setItem("jwt", response.data);
         console.log(response);
         if (response.status === 200) {
           history.push("/map");

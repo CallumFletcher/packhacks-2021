@@ -32,7 +32,7 @@ const Signup = (props) => {
   const [userInfo, setUserInfo] = useState({
     username: "",
     password: "",
-    role: "",
+    role: "Student",
     score: 0,
   });
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -81,23 +81,12 @@ const Signup = (props) => {
           </Grid>
           <Grid item xs={12}>
             <TextField
-              variant="outlined"
-              name="role"
-              onChange={handleChange}
-              value={userInfo.role}
-              label="Role"
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
               name="password"
               onChange={handleChange}
               value={userInfo.password}
               variant="outlined"
               label="Password"
               type="password"
-              helperText="Don't use a real password, I didn't spend much time on security."
               fullWidth
               error={error}
             />

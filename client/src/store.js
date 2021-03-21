@@ -3,7 +3,7 @@ import React, { createContext, useReducer } from "react";
 const initialState = {
   loggedIn: false,
   username: "",
-  jwt: "",
+  jwt: localStorage.getItem("jwt") || "",
 };
 const store = createContext(initialState);
 const { Provider } = store;
