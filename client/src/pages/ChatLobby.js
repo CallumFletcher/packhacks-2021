@@ -37,7 +37,7 @@ const useStyles = makeStyles({
   },
 });
 
-const socket = io.connect("/");
+const socket = io.connect("http://localhost:5000");
 
 function Lobby(props) {
   const [showVideo, setShowVideo] = useState(false);
@@ -146,7 +146,7 @@ function Lobby(props) {
                 margin: 15,
                 height: "100%",
                 maxHeight: 800,
-                minHeight: 500,
+                minHeight: 800,
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
@@ -161,15 +161,18 @@ function Lobby(props) {
               </Typography>
               <Grid
                 container
-                style={{ marginBottom: 20, flexGrow: 100, overflow: "scroll" }}
-                spacing={1}
+                style={{
+                  marginBottom: 20,
+                  overflow: "scroll",
+                  height: 800,
+                  display: "flex",
+                  flexDirection: "column",
+                }}
               >
                 {chat.map((message) => (
-                  <Grid item xs={12}>
-                    <Paper elevation={12} style={{ padding: 10 }}>
-                      <Typography variant="body1">{message}</Typography>
-                    </Paper>
-                  </Grid>
+                  <Paper elevation={12} style={{ padding: 10, marginTop: 10 }}>
+                    <Typography variant="body1">{message}</Typography>
+                  </Paper>
                 ))}
               </Grid>
               <div
