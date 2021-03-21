@@ -51,7 +51,7 @@ const Signup = (props) => {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          history.push("/map");
+          history.push("/login");
         }
       })
       .catch((error) => console.log(error));

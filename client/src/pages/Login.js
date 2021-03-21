@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   Container,
   Typography,
@@ -27,6 +28,7 @@ const useStyles = makeStyles({
 
 const Signup = (props) => {
   const classes = useStyles();
+  const history = useHistory();
   const [userInfo, setUserInfo] = useState({
     username: "",
     password: "",
@@ -37,6 +39,9 @@ const Signup = (props) => {
       .post("http://localhost:5000/api/user/login", userInfo)
       .then((response) => {
         console.log(response);
+        if (response.status === 200) {
+          history.push("/map");
+        }
       })
       .catch((error) => console.log(error));
   }

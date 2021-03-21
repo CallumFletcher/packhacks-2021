@@ -4,9 +4,9 @@ const User = require("../models/User");
 
 router.get("/:name", async (req, res) => {
   const roomInfo = await Room.findOne({ name: req.params.name });
-  console.log(roomInfo);
+  console.log(roomInfo._id);
   if (roomInfo) {
-    res.send({ response: roomInfo.subscriberList }).status(200);
+    res.send({ response: roomInfo._id }).status(200);
   } else {
     res.send("SADDDDDDDD!").status(400);
   }
@@ -14,6 +14,7 @@ router.get("/:name", async (req, res) => {
 
 router.patch("/subscribe/:user", async (req, res) => {
   const userInfo = req.params.user;
+  console.log(userInfo);
   //let roomInfo = await Room.findOne({ name: req.params.name });
   //console.log(roomInfo);
   //const newUser = new User({});

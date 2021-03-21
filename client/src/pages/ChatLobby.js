@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import io from "socket.io-client";
 import { TextField, Button } from "@material-ui/core";
 import VideoConference from "../components/VideoConference";
@@ -10,6 +11,8 @@ const socket = io.connect("http://localhost:5000");
 function Lobby(props) {
   const [message, setMessage] = useState({ message: "", name: "" });
   const [chat, setChat] = useState([]);
+
+  const { id } = useParams();
 
   useEffect(() => {
     socket.on("message", (message) => {

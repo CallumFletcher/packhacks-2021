@@ -17,7 +17,7 @@ function App(props) {
         <Route exact path="/">
           <LandingPage />
         </Route>
-        <Route exact path="/lobby">
+        <Route exact path="/lobby/:id">
           <Lobby />
         </Route>
         <Route exact path="/login">
