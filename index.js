@@ -44,22 +44,6 @@ app.use("/api/leaderboard", leaderboardRoute);
     io.emit("message", { message: "User disconected", name: "server"});
   });
 
-  
-  socket.on("join_room", room => {
-    socket.join(room);
-  });
-
-  
-  socket.on("message", ({ room, message }) => {
-    socket.to(room).emit("message", message);
-    console.log("Message Sent!");
-  });
-
-  
-  socket.on("message", (message) => {
-    console.log("messsage sent");
-    io.emit("message", message);
-  });
   */
   io.on("connection", (socket) => {
   
@@ -67,6 +51,9 @@ app.use("/api/leaderboard", leaderboardRoute);
     const { roomId } = socket.handshake.query;
     socket.join(roomId);
   
+    // New user join
+    io.in(roomId).emit("newChatMessage", { message: "User joined", name: "server" });
+
     // Listen for new messages
     socket.on("newChatMessage", (message) => {
       io.in(roomId).emit("newChatMessage", message);
@@ -75,6 +62,7 @@ app.use("/api/leaderboard", leaderboardRoute);
     // Leave the room if the user closes the socket
     socket.on("disconnect", () => {
       socket.leave(roomId);
+      io.in(roomId).emit("newChatMessage", { message: "User disconected", name: "server"});
     });
   });
 
