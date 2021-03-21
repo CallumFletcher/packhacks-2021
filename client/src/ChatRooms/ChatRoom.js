@@ -12,7 +12,7 @@ function ChatRoom(props) {
 
   useEffect(() => {
     socket.on("message", (message) => {
-      setChat((prev) => [...prev, message]);
+      //setChat((prev) => [...prev, message]);
       console.log(message);
     });
   }, []);
@@ -46,7 +46,7 @@ function ChatRoom(props) {
         }}
       >
         <div
-          className="leff-text-wrapper"
+          className="left-text-wrapper"
           style={{
             left: "40px",
           }}
