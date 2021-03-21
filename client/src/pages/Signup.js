@@ -32,7 +32,7 @@ const Signup = (props) => {
   const [userInfo, setUserInfo] = useState({
     username: "",
     password: "",
-    role: "Student",
+    role: "student",
     score: 0,
   });
   const [confirmPassword, setConfirmPassword] = useState("");
