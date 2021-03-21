@@ -1,7 +1,11 @@
 .your-thoughts-container {
     background-color: #ffffff;
-    height: 100vh;
+    height: 80vh;
+    width: 80vw;
+    margin-left: 9vw;
+    margin-top: 9vh;
     text-align: center;
+    padding: 15px;
   }
   
   .your-thoughts-heading {
@@ -37,7 +41,7 @@
   .your-thoughts-textarea {
     color: #091133;
     width: 80%;
-    height: 230px;
+    height: 100px;
     border: 0;
     margin-bottom: 30px;
     font-family: "Roboto", sans-serif;
@@ -47,5 +51,19 @@
     padding: 2px;
     border-radius: 10px;
     text-align: center;
+  }
+
+  .backs {
+    position: absolute;
+    bottom: 9.5vh;
+    left: 3vw;
+    height: auto;
+    width: 8vw;
+  }
+  
+  .bacs:hover {
+    width: 9.3vw;
+    filter: brightness(50%);
+    cursor: pointer;
   }
   

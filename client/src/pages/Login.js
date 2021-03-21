@@ -129,18 +129,10 @@ const Signup = (props) => {
               fullWidth
             />
           </Grid>
-
-          <Grid item xs={6}>
-            <Link to={"/"}>
-              <Button variant="contained" color="secondary"disableUnderline= "true" textDecoration= 'none'>
-                Cancel
-              </Button>
-            </Link>
-          </Grid>
           <Grid
             item
-            xs={6}
-            style={{ display: "flex",disableUnderline: "false", justifyContent: "flex-end", textDecoration: 'none', color: 'primary'}}
+            xs={7}
+            style={{ display: "flex",disableUnderline: "false", justifyContent: 'flex-end', alignItems: 'center', textDecoration: 'none', color: 'primary', width: '100px', marginRight: '50px'}}
           >
             <Button
               variant="contained"
