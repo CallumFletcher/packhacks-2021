@@ -20,6 +20,10 @@ const LandingPage = (props) => {
         <Link to={"/chatroom"} className="enter-chatroom-button">
           Join room
         </Link>
+        <Link to={"/chathomeroom"} className="enter-chathomeSroom-button">
+          Join room
+        </Link>
+        ^^^ Im am good, you?
       </Typography>
     </Container>
   );

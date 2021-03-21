@@ -1,21 +1,30 @@
-import React, { useState, useEffect } from "react";
-import io from "socket.io-client";
+import React, { useState } from "react";
 import { TextField, Button } from "@material-ui/core";
 import "./ChatRoom.css";
+import { useParams } from "react-router-dom";
+import ChatSocketConection from "../ChatSocketConection";
 
-const socket = io.connect("localhost:5000");
-const chatName = "localhost:5000";
-
-function ChatRoom(props) {
+function ChatRoom() {
+  const room = useParams().roomId;
   const [message, setMessage] = useState({ message: "", name: "" });
+  /*
   const [chat, setChat] = useState([]);
+  */
+  const { messages, sendMessage } = ChatSocketConection(room);
 
+  /*
   useEffect(() => {
     socket.on("message", (message) => {
       setChat((prev) => [...prev, message]);
       console.log(message);
     });
   }, []);
+  */
+
+  const handleSendMessage = () => {
+    sendMessage(message);
+    setMessage((prev) => ({ ...prev, message: "" }));
+  };
 
   return (
     <div
@@ -29,29 +38,31 @@ function ChatRoom(props) {
       <div
         className="chat-container-left"
         style={{
-          backgroundColor: "white",
-          position: "absolute",
-          left: "40px",
-          height: 600,
-          top: "40%",
-          marginTop: "-240px",
-          width: 450,
-          borderRadius: "5rem",
-          overflowX: "hidden" /* Hide horizontal scrollbar */,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          rowGap: "10px",
+          height: "100vh",
+          width: "100%",
+          position: "relative",
         }}
       >
         <div
-          className="leff-text-wrapper"
+          className="chat-container-left"
           style={{
+            backgroundColor: "white",
+            position: "absolute",
             left: "40px",
+            height: 600,
+            top: "40%",
+            marginTop: "-240px",
+            width: 450,
+            borderRadius: "5rem",
+            overflowX: "hidden" /* Hide horizontal scrollbar */,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            rowGap: "10px",
           }}
         >
-          <h1>{`Wellcome to ${chatName}`}</h1>
+          <h1 className="room-name"> Wellcom to {room} </h1>
         </div>
         <TextField
           syle={{
@@ -77,11 +88,13 @@ function ChatRoom(props) {
         />
         <Button
           variant="contained"
-          onClick={(e) => {
-            e.preventDefault();
-            socket.emit("message", message);
-            setMessage((prev) => ({ ...prev, message: "" }));
-          }}
+          onClick={
+            handleSendMessage
+            /*
+            socket.emit("from_room", room);
+            socket.emit("message", ({ room, message }));
+            */
+          }
         >
           Submit
         </Button>
@@ -105,7 +118,7 @@ function ChatRoom(props) {
           overflowX: "hidden" /* Hide horizontal scrollbar */,
         }}
       >
-        {chat.map((message) => (
+        {messages.map((message) => (
           <div
             className="chat-element"
             style={{
@@ -115,8 +128,9 @@ function ChatRoom(props) {
               left: "40px",
             }}
           >
-            <span>
-              <p>{message.message}</p> <p>-{message.name}</p>
+            <span id="users">
+              <p>{message.messageBody.message}</p>{" "}
+              <p>-{message.messageBody.name}</p>
             </span>
           </div>
         ))}

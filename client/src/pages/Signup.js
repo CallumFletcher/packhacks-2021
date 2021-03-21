@@ -57,7 +57,6 @@ const Signup = (props) => {
       })
       .catch((error) => console.log(error));
   }
-
   function handleChange(e) {
     e.persist();
     setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
