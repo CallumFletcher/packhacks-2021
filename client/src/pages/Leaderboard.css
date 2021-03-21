@@ -214,8 +214,8 @@
 }
 
 .back {
-    position: absolute;
-    bottom: 5vh;
+    position: fixed;
+    top: 10vh;
     left:3vw;
     height: auto;
     width: 9vw;

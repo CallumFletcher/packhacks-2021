@@ -14,6 +14,10 @@ import VideoConference from "../components/VideoConference";
 import { store } from "../store.js";
 import { Paper } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
+import "./ChatLobby.css";
+import { Link } from "react-router-dom";
+import Background from "../assets/HomeBackground.png";
+import Back from "../assets/Back.png";
 
 //for local testing, change to localhost:5000
 //the react proxy doesn't like socket connections
@@ -99,7 +103,51 @@ function Lobby(props) {
   }, []);
 
   return (
-    <div classname={classes.root}>
+    <div classname={classes.root} style={{
+      backgroundImage: `url(${Background})`,
+      imageRendering: "pixelated",
+      backgroundSize: "100% 100%",
+      backgroundRepeat: "no-repeat",
+      minHeight: "100vh",
+      minWidth: "100%",
+      position: "fixed",
+      top: 0,
+      left: 0,
+      paddingBottom: '20vh'
+    }}>
+      <div id="background-wrap">
+        <div class="x1">
+          <div class="cloud1"></div>
+        </div>
+
+        <div class="x2">
+          <div class="cloud2"></div>
+        </div>
+
+        <div class="x3">
+          <div class="cloud3"></div>
+        </div>
+
+        <div class="x4">
+          <div class="cloud4"></div>
+        </div>
+
+        <div class="x5">
+          <div class="cloud1"></div>
+        </div>
+
+        <div class="x6">
+          <div class="cloud2"></div>
+        </div>
+
+        <div class="x7">
+          <div class="cloud3"></div>
+        </div>
+
+        <div class="x8">
+          <div class="cloud4"></div>
+        </div>
+      </div>
       <Grid container>
         <Grid item xs={6}>
           <div className={classes.video}>
@@ -199,6 +247,9 @@ function Lobby(props) {
                   Send
                 </Button>
               </div>
+              <Link to="/">
+        <img className="back" src={Back} alt="Back"></img>
+      </Link>
 
               {/* {chat.map((message) => (
                 <div style={{ margin: 0, padding: 0 }}>

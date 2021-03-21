@@ -15,6 +15,10 @@ import axios from "axios";
 import { store } from "../store";
 import scoreToTime from "../utils/scoreToTime";
 import scoreToRank from "../utils/scoreToRank";
+import "./Leaderboard.css";
+import { Link } from "react-router-dom";
+import Background from "../assets/HomeBackground.png";
+import Back from "../assets/Back.png";
 
 const LeaderboardItem = (props) => {
   return (
@@ -67,7 +71,57 @@ const Leaderboard = (props) => {
 
   return (
     <React.Fragment>
+      <div
+        style={{
+          backgroundImage: `url(${Background})`,
+          imageRendering: "pixelated",
+          backgroundSize: "100% 100%",
+          backgroundRepeat: "no-repeat",
+          minHeight: "100vh",
+          minWidth: "100%",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          zIndex: "-1",
+        }}
+      ></div>
       <Container>
+        <div id="background-wrap">
+          <div class="x1">
+            <div class="cloud1"></div>
+          </div>
+
+          <div class="x2">
+            <div class="cloud2"></div>
+          </div>
+
+          <div class="x3">
+            <div class="cloud3"></div>
+          </div>
+
+          <div class="x4">
+            <div class="cloud4"></div>
+          </div>
+
+          <div class="x5">
+            <div class="cloud1"></div>
+          </div>
+
+          <div class="x6">
+            <div class="cloud2"></div>
+          </div>
+
+          <div class="x7">
+            <div class="cloud3"></div>
+          </div>
+
+          <div class="x8">
+            <div class="cloud4"></div>
+          </div>
+        </div>
+        <Link to="/">
+        <img className="back" src={Back} alt="Back"></img>
+      </Link>
         <Typography variant="h3" align="center">
           Leaderboard
         </Typography>
@@ -126,7 +180,10 @@ const Leaderboard = (props) => {
           </CardContent>
         </Card>
       </Container>
-      <TableContainer component={Paper}>
+      <TableContainer
+        style={{ marginLeft: "5vw", marginTop: "3vw", width: "90vw" }}
+        component={Paper}
+      >
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>

@@ -1,0 +1,51 @@
+.your-thoughts-container {
+    background-color: #f2f5ff;
+    height: 100vh;
+    text-align: center;
+  }
+  
+  .your-thoughts-heading {
+    color: #091133;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 48px;
+    margin-bottom: 40px;
+  }
+  
+  .your-thoughts-form {
+    color: #091133;
+  }
+  
+  .your-thoughts-input {
+    color: #091133;
+    width: 80%;
+    height: 50px;
+    border: 0;
+    margin-bottom: 40px;
+    filter: drop-shadow(0px 16px 60px rgba(78, 79, 114, 0.08));
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 2px;
+    text-align: center;
+  }
+  
+  textarea:focus,
+  input:focus {
+    outline: none;
+  }
+  
+  .your-thoughts-textarea {
+    color: #091133;
+    width: 80%;
+    height: 230px;
+    border: 0;
+    margin-bottom: 30px;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    filter: drop-shadow(0px 16px 60px rgba(78, 79, 114, 0.08));
+    font-size: 16px;
+    padding: 2px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
