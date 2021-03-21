@@ -5,7 +5,6 @@ import Background from "../assets/Background.png";
 import { useParams } from "react-router-dom";
 import ChatSocketConection from "../ChatSocketConection";
 
-
 function ChatRoom() {
   const room = useParams().roomId;
   const [message, setMessage] = useState({ message: "", name: "" });
@@ -13,13 +12,11 @@ function ChatRoom() {
   const [chat, setChat] = useState([]);
   */
   const { messages, sendMessage } = ChatSocketConection(room);
-  
-  
 
   /*
   useEffect(() => {
     socket.on("message", (message) => {
-      setChat((prev) => [...prev, message]);
+      //setChat((prev) => [...prev, message]);
       console.log(message);
     });
   }, []);
@@ -30,53 +27,56 @@ function ChatRoom() {
     setMessage((prev) => ({ ...prev, message: "" }));
   };
 
-return (
-  <div className="chat-container-main"
+  return (
+    <div
+      className="chat-container-main"
       style={{
-        height: '100vh',
-        width: '100%',
-        position: 'relative',
-      }}
-  >
-    <div className="chat-container-left"
-      style={{
-        backgroundImage: Background,
-        backgroundColor: "white",
-        position: "absolute",
-        left: "40px",
-        height: 600,
-        top: "40%",
-        marginTop: "-240px",
-        width: 450,
-        borderRadius: "5rem",
-        overflowX: "hidden" /* Hide horizontal scrollbar */,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        rowGap: "10px",
+        height: "100vh",
+        width: "100%",
+        position: "relative",
       }}
     >
-      <div className="left-text-wrapper"
+      <div
+        className="chat-container-left"
         style={{
-          left: '40px',
+          backgroundImage: Background,
+          backgroundColor: "white",
+          position: "absolute",
+          left: "40px",
+          height: 600,
+          top: "40%",
+          marginTop: "-240px",
+          width: 450,
+          borderRadius: "5rem",
+          overflowX: "hidden" /* Hide horizontal scrollbar */,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          rowGap: "10px",
         }}
       >
-        <h1 className="room-name"> Wellcom to {room} </h1>
+        <div
+          className="left-text-wrapper"
+          style={{
+            left: "40px",
+          }}
+        >
+          <h1 className="room-name"> Wellcom to {room} </h1>
         </div>
-          <TextField
-            syle={{
-               paddingBottom: 10 
-              }}
-            variant="outlined"
-            placeholder="name"
-            value={message.name}
-            onChange={(e) => {
+        <TextField
+          syle={{
+            paddingBottom: 10,
+          }}
+          variant="outlined"
+          placeholder="name"
+          value={message.name}
+          onChange={(e) => {
             setMessage((prev) => ({ ...prev, name: e.target.value }));
           }}
         />
         <div
-          className="chat-container-left"
+          className="left-text-wrapper"
           style={{
             backgroundColor: "white",
             position: "absolute",
@@ -109,7 +109,7 @@ return (
         />
         <Button
           variant="contained"
-          onClick= {
+          onClick={
             handleSendMessage
             /*
             socket.emit("from_room", room);
@@ -118,38 +118,46 @@ return (
           }
         >
           Submit
-        </Button>  
-    </div>
-    <div className="chat-container-right"
-      style={{
-        backgroundColor: 'white',
-        position: 'absolute',
-        display: 'block',
-        right: '40px',
-        top: '40%',
-        marginTop: '-240px',
-        height: 600,
-        width: 1000,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        overflow: "scroll",
-        borderRadius: '5rem',
-        overflowX: 'hidden' /* Hide horizontal scrollbar */,
-      }}
-    >
-      {messages && messages.map((message) => (
-            <div className="chat-element" style={{ position: 'relative', margin: 0, padding: 0, left: '40px' }}>
-              <span id ="users">
-                <p>{message.messageBody.message}</p> <p>-{message.messageBody.name}</p>
+        </Button>
+      </div>
+      <div
+        className="chat-container-right"
+        style={{
+          backgroundColor: "white",
+          position: "absolute",
+          display: "block",
+          right: "40px",
+          top: "40%",
+          marginTop: "-240px",
+          height: 600,
+          width: 1000,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
+          overflow: "scroll",
+          borderRadius: "5rem",
+          overflowX: "hidden" /* Hide horizontal scrollbar */,
+        }}
+      >
+        {messages &&
+          messages.map((message) => (
+            <div
+              className="chat-element"
+              style={{
+                position: "relative",
+                margin: 0,
+                padding: 0,
+                left: "40px",
+              }}
+            >
+              <span id="users">
+                <p>{message.messageBody.message}</p>{" "}
+                <p>-{message.messageBody.name}</p>
               </span>
-          </div>
-        ))}
+            </div>
+          ))}
+      </div>
     </div>
-    
-  </div>
-
-
   );
 }
 
