@@ -36,6 +36,15 @@ const Map = (props) => {
       <Button variant="contained" color="primary" onClick={handlePhys}>
         Classical Mechanics
       </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => {
+          history.push("leaderboard");
+        }}
+      >
+        Leaderboard
+      </Button>
     </Container>
   );
 };
