@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@material-ui/core";
 import "./ChatRoom.css";
-import Background from "../assets/Background.png"
+import Background from "../assets/Background.png";
 import { useParams } from "react-router-dom";
 import ChatSocketConection from "../ChatSocketConection";
 
@@ -32,20 +32,20 @@ function ChatRoom() {
       className="chat-container-main"
       style={{
         backgroundImage: Background,
-        backgroundColor: 'white',
-        position: 'absolute',
-        left: '40px',
+        backgroundColor: "white",
+        position: "absolute",
+        left: "40px",
         height: 600,
-        top: '40%',
-        marginTop: '-240px',
+        top: "40%",
+        marginTop: "-240px",
         width: 450,
-        borderRadius: '5rem',
-        overflowX: 'hidden' /* Hide horizontal scrollbar */,
-        display: 'flex',
+        borderRadius: "5rem",
+        overflowX: "hidden" /* Hide horizontal scrollbar */,
+        display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        rowGap: '10px',
+        rowGap: "10px",
       }}
     >
       <div
@@ -56,7 +56,6 @@ function ChatRoom() {
           position: "relative",
         }}
       >
-
         <div
           className="chat-container-left"
           style={{
@@ -78,17 +77,6 @@ function ChatRoom() {
         >
           <h1 className="room-name"> Welcome to {room} </h1>
         </div>
-        <TextField
-          syle={{
-            paddingBottom: 10,
-          }}
-          variant="outlined"
-          placeholder="name"
-          value={message.name}
-          onChange={(e) => {
-            setMessage((prev) => ({ ...prev, name: e.target.value }));
-          }}
-        />
         <TextField
           placeholder="message"
           multiline
