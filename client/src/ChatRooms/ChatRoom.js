@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 import { TextField, Button } from "@material-ui/core";
 import "./ChatRoom.css";
+import Background from "../assets/Background.png"
 
 const socket = io.connect("localhost:5000");
 const chatName = "localhost:5000";
@@ -26,6 +27,7 @@ function ChatRoom(props) {
   >
     <div className="chat-container-left"
       style={{
+        backgroundImage: Background,
         backgroundColor: 'white',
         position: 'absolute',
         left: '40px',
@@ -47,7 +49,7 @@ function ChatRoom(props) {
           left: '40px',
         }}
       >
-        <h1>{`Wellcome to ${chatName}`}</h1>
+        <h1>{`Welcome to ${chatName}`}</h1>
         </div>
           <TextField
             syle={{
