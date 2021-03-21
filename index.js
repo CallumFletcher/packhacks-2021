@@ -7,7 +7,7 @@ const app = express();
 const dotenv = require("dotenv");
 const port = process.env.PORT || 5000;
 const cors = require("cors");
-const Lobby = require("./models/Lobby");
+const Lobby = require("./api/models/Lobby");
 
 //setup socket
 const server = http.createServer(app);
@@ -29,10 +29,12 @@ mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () =>
 app.use(express.json());
 
 //routes
-const authRoute = require("./routes/auth");
+const authRoute = require("./api/routes/auth");
+const roomRoute = require("./api/routes/room");
 app.use("/api/user", authRoute);
+app.use("/api/room", roomRoute);
 
-const leaderboardRoute = require("./routes/leaderboard");
+const leaderboardRoute = require("./api/routes/leaderboard");
 app.use("/api/leaderboard", leaderboardRoute);
 
 //basic chat stuff, needs to be changed

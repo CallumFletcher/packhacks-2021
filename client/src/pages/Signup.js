@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import {
   Container,
   Typography,
@@ -9,7 +10,6 @@ import {
   Grid,
 } from "@material-ui/core";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -48,18 +48,20 @@ const Signup = (props) => {
 
   function handleSend() {
     axios
-      .post("/api/user/register", userInfo)
+      .post("api/user/register", userInfo)
       .then((response) => {
         console.log(response);
-        history.push("/login");
+        if (response.status === 200) {
+          history.push("/login");
+        }
       })
       .catch((error) => console.log(error));
   }
-  
   function handleChange(e) {
     e.persist();
     setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
+
   return (
     <Container className={classes.root}>
       <Typography variant="h3" align="center" style={{ paddingTop: 100 }}>

@@ -1,3 +1,4 @@
+import { useHistory } from "react-router-dom";
 import React, { useState, useContext } from "react";
 import {
   Container,
@@ -10,8 +11,6 @@ import {
 } from "@material-ui/core";
 import axios from "axios";
 import { store } from "../store";
-import { useHistory } from "react-router-dom";
-
 const useStyles = makeStyles({
   root: {
     display: "flex",
@@ -28,8 +27,8 @@ const useStyles = makeStyles({
 });
 
 const Signup = (props) => {
-  const history = useHistory();
   const classes = useStyles();
+  const history = useHistory();
   const [userInfo, setUserInfo] = useState({
     username: "",
     password: "",
@@ -45,7 +44,9 @@ const Signup = (props) => {
           payload: { username: userInfo.username, jwt: response.data },
         });
         console.log(response);
-        history.push("/leaderboard");
+        if (response.status === 200) {
+          history.push("/map");
+        }
       })
       .catch((error) => {
         alert("Incorrect Username or Password");
