@@ -9,7 +9,7 @@ const Map = (props) => {
     history.push("/lobby");
   }
 
-  function handleLinAlg() {
+  function handlePhys() {
     history.push("/lobby");
   }
 
@@ -19,10 +19,10 @@ const Map = (props) => {
         Map of lobbies will go here
       </Typography>
       <Button variant="contained" color="primary" onClick={handleCalc}>
-        Math 117
+        Calculus
       </Button>
-      <Button variant="contained" color="primary" onClick={handleLinAlg}>
-        Math 115
+      <Button variant="contained" color="primary" onClick={handlePhys}>
+        Classical Mechanics
       </Button>
     </Container>
   );

@@ -2,27 +2,30 @@ const mongoose = require("mongoose");
 const user = require("./User");
 
 const roomSchema = new mongoose.Schema({
-  teacher: {
+  professor: {
     type: String,
     required: false,
+    default: "",
   },
   timeSlot: {
     start: {
-      type: Date,
+      type: String,
       required: false,
+      default: "1:00 PM",
     },
     end: {
-      type: Date,
+      type: String,
       required: false,
+      default: "2:00 PM",
     },
   },
   subscriberList: {
-    type: Array[user],
+    type: Array,
     required: false,
+    default: [],
   },
   capacity: {
     type: Number,
-    required: true,
     default: 20,
   },
   name: {
