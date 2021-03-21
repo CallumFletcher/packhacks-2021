@@ -38,38 +38,16 @@ const leaderboardRoute = require("./api/routes/leaderboard");
 app.use("/api/leaderboard", leaderboardRoute);
 
 //basic chat stuff, needs to be changed
-/*
-  io.emit("message", { message: "User joined", name: "server" });
-
-
-  socket.on("disconnect", () => {
-    io.emit("message", { message: "User disconected", name: "server"});
-  });
-
-  */
 io.on("connection", (socket) => {
-  // Join a conversation
-  const { roomId } = socket.handshake.query;
-  socket.join(roomId);
+  console.log("new connection");
 
-  // New user join
-  io.in(roomId).emit("newChatMessage", {
-    message: "User joined",
-    name: "server",
-  });
-
-  // Listen for new messages
-  socket.on("newChatMessage", (message) => {
-    io.in(roomId).emit("newChatMessage", message);
-  });
-
-  // Leave the room if the user closes the socket
   socket.on("disconnect", () => {
-    socket.leave(roomId);
-    io.in(roomId).emit("newChatMessage", {
-      message: "User disconected",
-      name: "server",
-    });
+    io.emit("message", "user has left");
+  });
+
+  socket.on("message", (message) => {
+    console.log(message, "BACKEND");
+    io.emit("message", message);
   });
 });
 
