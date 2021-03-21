@@ -22,7 +22,7 @@ router.get("/user", verify, async (req, res) => {
       }
       return isUser;
     });
-    res.send({ index: index, info: info });
+    res.send({ index: index, data: info[0] });
   } catch (error) {
     res.status(400).send("something went wrong");
   }
