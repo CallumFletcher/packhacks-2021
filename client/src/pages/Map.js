@@ -21,6 +21,34 @@ const Map = (props) => {
       .catch((error) => console.log(error));
   }
 
+  function handleChem() {
+    axios
+      .get("/api/room/Materials Chemistry")
+      .then((response) => lobbyNavigate(response.data.response))
+      .catch((error) => console.log(error));
+  }
+
+  function handleLit() {
+    axios
+      .get("/api/room/Literature")
+      .then((response) => lobbyNavigate(response.data.response))
+      .catch((error) => console.log(error));
+  }
+
+  function handleStudy() {
+    axios
+      .get("/api/room/Study Room")
+      .then((response) => lobbyNavigate(response.data.response))
+      .catch((error) => console.log(error));
+  }
+
+  function handleHangout() {
+    axios
+      .get("/api/room/Hangout Room")
+      .then((response) => lobbyNavigate(response.data.response))
+      .catch((error) => console.log(error));
+  }
+
   function lobbyNavigate(id) {
     history.push(`/lobby/${id}`);
   }
@@ -35,6 +63,18 @@ const Map = (props) => {
       </Button>
       <Button variant="contained" color="primary" onClick={handlePhys}>
         Classical Mechanics
+      </Button>
+      <Button variant="contained" color="primary" onClick={handleChem}>
+        Materials Chemistry
+      </Button>
+      <Button variant="contained" color="primary" onClick={handleLit}>
+        Literature
+      </Button>
+      <Button variant="contained" color="primary" onClick={handleStudy}>
+        Study Room
+      </Button>
+      <Button variant="contained" color="primary" onClick={handleHangout}>
+        Hangout Room
       </Button>
       <Button
         variant="contained"
