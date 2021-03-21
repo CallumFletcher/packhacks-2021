@@ -42,6 +42,12 @@ function App(props) {
         <Route exact path="/chathomeroom">
           <ChatHomeRoom />
         </Route>
+        <Route exact path="/about">
+          <About />
+        </Route>
+        <Route exact path="/contact">
+          <Contact />
+        </Route>
         <Route exact path="/:roomId">
           <ChatRoom />
         </Route>
