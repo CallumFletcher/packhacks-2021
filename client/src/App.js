@@ -10,8 +10,6 @@ import Signup from "./pages/Signup";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import VideoConference from "./pages/VideoConference";
-import ChatRoom from "./ChatRooms/ChatRoom";
-import ChatHomeRoom from "./ChatRooms/ChatsHomeRoom";
 
 
 function App(props) {
@@ -42,8 +40,8 @@ function App(props) {
         <Route exact path="/video-conference">
           <VideoConference />
         </Route>
-        <Route exact path="/chathomeroom">
-          <ChatHomeRoom />
+        <Route exact path="/about">
+          <About />
         </Route>
         <Route exact path="/about">
           <About />

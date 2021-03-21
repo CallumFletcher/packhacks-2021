@@ -1,19 +1,18 @@
 import React from "react";
-import { Container, Typography, makeStyles } from "@material-ui/core";
+import { Link } from 'react-router-dom';
+import "./About.css"
 
-const useStyles = makeStyles({
-  root: {
-    display: "flex",
-  },
-});
-
-const About = (props) => {
+const About = () => {
   return (
-    <Container>
-      <Typography variant="h2" align="center">
-        About
-      </Typography>
-    </Container>
+    <section className="about-us">
+      <Link to="/">
+      <div className="back-button-btn"></div>
+      </Link>
+      
+      <div className="about-us-wrapper-img">
+      </div>
+    </section>
+
   );
 };
 
