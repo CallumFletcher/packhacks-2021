@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import Lobby from "./pages/Lobby";
+import Lobby from "./pages/ChatLobby";
 import Leaderboard from "./pages/Leaderboard";
 import Login from "./pages/Login";
 import Map from "./pages/Map";
@@ -11,6 +11,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import VideoConference from "./pages/VideoConference";
 import ChatRoom from "./ChatRooms/ChatRoom";
+import ChatHomeRoom from "./ChatRooms/ChatsHomeRoom";
 
 
 function App(props) {
@@ -20,7 +21,7 @@ function App(props) {
         <Route exact path="/">
           <LandingPage />
         </Route>
-        <Route exact path="/lobby">
+        <Route exact path="/lobby/:id">
           <Lobby />
         </Route>
         <Route exact path="/login">
@@ -41,7 +42,10 @@ function App(props) {
         <Route exact path="/video-conference">
           <VideoConference />
         </Route>
-        <Route exact path="/chatroom">
+        <Route exact path="/chathomeroom">
+          <ChatHomeRoom />
+        </Route>
+        <Route exact path="/:roomId">
           <ChatRoom />
         </Route>
         <Route exact path="/about">

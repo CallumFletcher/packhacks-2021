@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import {
   Container,
   Typography,
@@ -26,11 +27,13 @@ const useStyles = makeStyles({
 });
 
 const Signup = (props) => {
+  const history = useHistory();
   const classes = useStyles();
   const [userInfo, setUserInfo] = useState({
     username: "",
     password: "",
     role: "",
+    score: 0,
   });
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(false);
@@ -42,11 +45,15 @@ const Signup = (props) => {
       setError(false);
     }
   }, [userInfo.password, confirmPassword]);
+
   function handleSend() {
     axios
-      .post("http://localhost:5000/api/user/register", userInfo)
+      .post("api/user/register", userInfo)
       .then((response) => {
         console.log(response);
+        if (response.status === 200) {
+          history.push("/login");
+        }
       })
       .catch((error) => console.log(error));
   }
@@ -54,6 +61,7 @@ const Signup = (props) => {
     e.persist();
     setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
+
   return (
     <Container className={classes.root}>
       <Typography variant="h3" align="center" style={{ paddingTop: 100 }}>
