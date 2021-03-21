@@ -7,6 +7,7 @@ const app = express();
 const dotenv = require("dotenv");
 const port = process.env.PORT || 5000;
 const cors = require("cors");
+const Lobby = require("./models/Lobby");
 
 app.use(cors());
 app.options("*", cors());

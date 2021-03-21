@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import Lobby from "./pages/Lobby";
+import Lobby from "./pages/ChatLobby";
 import Leaderboard from "./pages/Leaderboard";
 import Login from "./pages/Login";
 import Map from "./pages/Map";
