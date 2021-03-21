@@ -7,6 +7,7 @@ const verify = require("./verify");
 router.post("/register", async (req, res) => {
   const salt = await bcrypt.genSalt(10);
   const hashPassword = await bcrypt.hash(req.body.password, salt);
+  console.log("message")
   const user = new User({
     username: req.body.username,
     password: hashPassword,

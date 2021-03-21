@@ -1,4 +1,4 @@
-const express = require("express");
+var express = require("express");
 const path = require("path");
 const http = require("http");
 const socketIo = require("socket.io");
@@ -54,7 +54,7 @@ app.use("/api/leaderboard", leaderboardRoute);
     socket.join(roomId);
   
     // New user join
-      io.in(roomId).emit("newChatMessage", { message: "User joined", name: "server" });
+      // io.in(roomId).emit("newChatMessage", { message: "User joined", name: "server" });
 
     // Listen for new messages
     socket.on("newChatMessage", (message) => {

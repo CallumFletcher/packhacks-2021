@@ -1,5 +1,6 @@
 import { useHistory } from "react-router-dom";
 import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import {
   Container,
   Typography,
@@ -37,7 +38,7 @@ const Signup = (props) => {
   const { dispatch } = globalState;
   function handleSend() {
     axios
-      .post("/api/user/login", userInfo)
+      .post("http://localhost:5000/api/user/login", userInfo)
       .then((response) => {
         dispatch({
           type: "setUser",
@@ -88,9 +89,12 @@ const Signup = (props) => {
           </Grid>
 
           <Grid item xs={6}>
-            <Button variant="contained" color="secondary">
+          <Link to={"/"}>
+            <Button variant="contained" color
+            ="secondary">
               Cancel
             </Button>
+            </Link>
           </Grid>
           <Grid
             item

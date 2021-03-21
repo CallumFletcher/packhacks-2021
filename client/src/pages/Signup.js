@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Container,
   Typography,
@@ -48,7 +49,7 @@ const Signup = (props) => {
 
   function handleSend() {
     axios
-      .post("api/user/register", userInfo)
+      .post("http://localhost:5000/api/user/register", userInfo)
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
@@ -119,9 +120,11 @@ const Signup = (props) => {
             )}
           </Grid>
           <Grid item xs={6}>
+          <Link to={"/"}>
             <Button variant="contained" color="secondary">
               Cancel
             </Button>
+            </Link>
           </Grid>
           <Grid
             item

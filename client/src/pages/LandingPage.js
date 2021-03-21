@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, makeStyles, Container } from "@material-ui/core";
+import { makeStyles, Container } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import Background from "../assets/HomeBackground.png";
 import AboutCloud from "../assets/AboutCloud.png";
