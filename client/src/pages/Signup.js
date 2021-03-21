@@ -42,6 +42,7 @@ const Signup = (props) => {
       setError(false);
     }
   }, [userInfo.password, confirmPassword]);
+
   function handleSend() {
     axios
       .post("http://localhost:5000/api/user/register", userInfo)
@@ -50,6 +51,7 @@ const Signup = (props) => {
       })
       .catch((error) => console.log(error));
   }
+  
   function handleChange(e) {
     e.persist();
     setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));

@@ -4,15 +4,16 @@ const http = require("http");
 const socketIo = require("socket.io");
 
 const app = express();
+const dotenv = require("dotenv");
+const port = process.env.PORT || 5000;
+const cors = require("cors");
+const Lobby = require("./models/Lobby");
 
 //setup socket
 const server = http.createServer(app);
 const io = socketIo(server, { cors: { origin: "*" } });
 
   const mongoose = require("mongoose");
-  const dotenv = require("dotenv");
-  const port = process.env.PORT || 5000;
-  const cors = require("cors");
 
   app.use(cors()); 
   app.options("*", cors());
@@ -31,23 +32,49 @@ app.use(express.json());
 const authRoute = require("./routes/auth");
 app.use("/api/user", authRoute);
 
-//basic chat stuff, needs to be changed
-io.on("connection", (socket) => {
-  console.log("new connection");
 
+//basic chat stuff, needs to be changed
+  /*
   io.emit("message", { message: "User joined", name: "server" });
+
 
   socket.on("disconnect", () => {
     io.emit("message", { message: "User disconected", name: "server"});
   });
 
+  
+  socket.on("join_room", room => {
+    socket.join(room);
+  });
+
+  
+  socket.on("message", ({ room, message }) => {
+    socket.to(room).emit("message", message);
+    console.log("Message Sent!");
+  });
+
+  
   socket.on("message", (message) => {
     console.log("messsage sent");
     io.emit("message", message);
   });
+  */
+  io.on("connection", (socket) => {
   
-
-});
+    // Join a conversation
+    const { roomId } = socket.handshake.query;
+    socket.join(roomId);
+  
+    // Listen for new messages
+    socket.on("newChatMessage", (message) => {
+      io.in(roomId).emit("newChatMessage", message);
+    });
+  
+    // Leave the room if the user closes the socket
+    socket.on("disconnect", () => {
+      socket.leave(roomId);
+    });
+  });
 
 app.use(express.static(path.join(__dirname, "client/build")));
 

@@ -1,24 +1,33 @@
-import React, { useState, useEffect } from "react";
-import io from "socket.io-client";
+import React, { useState } from "react";
 import { TextField, Button } from "@material-ui/core";
 import "./ChatRoom.css";
-
-const socket = io.connect("localhost:5000");
-
-
+import {useParams} from "react-router-dom";
+import ChatSocketConection from "../ChatSocketConection";
 
 
 function ChatRoom() {
- 
+  const room = useParams().roomId;
   const [message, setMessage] = useState({ message: "", name: "" });
+  /*
   const [chat, setChat] = useState([]);
+  */
+  const { messages, sendMessage } = ChatSocketConection(room);
+  
+  
 
+  /*
   useEffect(() => {
     socket.on("message", (message) => {
       setChat((prev) => [...prev, message]);
       console.log(message);
     });
   }, []);
+  */
+
+  const handleSendMessage = () => {
+    sendMessage(message);
+    setMessage((prev) => ({ ...prev, message: "" }));
+  };
 
 return (
   <div className="chat-container-main"
@@ -51,7 +60,7 @@ return (
           left: '40px',
         }}
       >
-        <h2 id="room-name"></h2>
+        <h1 className="room-name"> Wellcom to {room} </h1>
         </div>
           <TextField
             syle={{
@@ -78,11 +87,13 @@ return (
         />
         <Button
           variant="contained"
-          onClick={(e) => {
-            e.preventDefault();
-            socket.emit("message", message);
-            setMessage((prev) => ({ ...prev, message: "" }));
-          }}
+          onClick= {
+            handleSendMessage
+            /*
+            socket.emit("from_room", room);
+            socket.emit("message", ({ room, message }));
+            */
+          }
         >
           Submit
         </Button>  
@@ -105,10 +116,10 @@ return (
         overflowX: 'hidden' /* Hide horizontal scrollbar */,
       }}
     >
-      {chat.map((message) => (
+      {messages.map((message) => (
             <div className="chat-element" style={{ position: 'relative', margin: 0, padding: 0, left: '40px' }}>
               <span id ="users">
-                <p>{message.message}</p> <p>-{message.name}</p>
+                <p>{message.messageBody.message}</p> <p>-{message.messageBody.name}</p>
               </span>
           </div>
         ))}
