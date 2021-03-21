@@ -250,8 +250,8 @@ function Lobby(props) {
                   Send
                 </Button>
               </div>
-              <Link to="/">
-        <img className="back" src={Back} alt="Back"></img>
+              <Link to="/map">
+        <img className="backy" src={Back} alt="Back"></img>
       </Link>
 
               {/* {chat.map((message) => (

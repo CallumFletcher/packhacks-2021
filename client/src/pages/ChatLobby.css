@@ -213,15 +213,15 @@
     filter: contrast(80%);
 }
 
-.back {
-    position: absolute;
-    bottom: 5vh;
+.backy {
+    position: fixed;
+    bottom: 6vh;
     left:3vw;
     height: auto;
     width: 9vw;
   }
   
-  .back:hover {
+  .backy:hover {
     width: 9.3vw;
     filter: brightness(50%);
     cursor: pointer;
