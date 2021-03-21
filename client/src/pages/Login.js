@@ -37,7 +37,7 @@ const Signup = (props) => {
   const { dispatch } = globalState;
   function handleSend() {
     axios
-      .post("http://localhost:5000/api/user/login", userInfo)
+      .post("/api/user/login", userInfo)
       .then((response) => {
         dispatch({
           type: "setUser",

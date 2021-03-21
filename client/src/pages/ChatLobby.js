@@ -9,7 +9,7 @@ import { store } from "../store.js";
 
 //for local testing, change to localhost:5000
 //the react proxy doesn't like socket connections
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("/");
 
 function Lobby(props) {
   const [message, setMessage] = useState({ message: "", name: "" });
@@ -24,7 +24,7 @@ function Lobby(props) {
   useEffect(() => {
     const userName = globalState.state.username;
     axios
-      .patch(`http://localhost:5000/api/room/subscribe/${id}`, {
+      .patch(`/api/room/subscribe/${id}`, {
         username: userName,
       })
       .then((response) => console.log(response))
@@ -38,7 +38,7 @@ function Lobby(props) {
       const userName = globalState.state.username;
       console.log("NICE");
       await axios
-        .patch(`http://localhost:5000/api/room/unsubscribe/${id}`, {
+        .patch(`/api/room/unsubscribe/${id}`, {
           username: userName,
         })
         .then((response) => console.log(response))

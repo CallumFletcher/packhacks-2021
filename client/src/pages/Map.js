@@ -9,14 +9,14 @@ const Map = (props) => {
 
   function handleCalc() {
     axios
-      .get("http://localhost:5000/api/room/Calculus")
+      .get("/api/room/Calculus")
       .then((response) => lobbyNavigate(response.data.response))
       .catch((error) => console.log(error));
   }
 
   function handlePhys() {
     axios
-      .get("http://localhost:5000/api/room/Classical Mechanics")
+      .get("/api/room/Classical Mechanics")
       .then((response) => lobbyNavigate(response.data.response))
       .catch((error) => console.log(error));
   }

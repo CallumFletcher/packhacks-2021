@@ -52,7 +52,7 @@ const Leaderboard = (props) => {
     async function fetchLeaderboard() {
       let config = {
         method: "get",
-        url: "http://localhost:5000/api/leaderboard/top",
+        url: "/api/leaderboard/top",
         headers: {
           "auth-token": jwt,
         },

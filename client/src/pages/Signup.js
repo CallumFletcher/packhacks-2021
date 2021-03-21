@@ -48,7 +48,7 @@ const Signup = (props) => {
 
   function handleSend() {
     axios
-      .post("http://localhost:5000/api/user/register", userInfo)
+      .post("api/user/register", userInfo)
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
